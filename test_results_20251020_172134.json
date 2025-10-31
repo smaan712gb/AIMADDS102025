@@ -1,0 +1,21 @@
+{
+  "passed": [
+    {
+      "test": "Configuration Loading",
+      "passed": true,
+      "details": "All required agents configured",
+      "timestamp": "2025-10-20T17:21:34.364161"
+    }
+  ],
+  "failed": [
+    {
+      "test": "LLM Initialization",
+      "passed": false,
+      "details": "'ChatAnthropic' object has no attribute 'model_name'",
+      "timestamp": "2025-10-20T17:21:34.364161"
+    }
+  ],
+  "warnings": [],
+  "start_time": "2025-10-20 17:21:34.357962",
+  "end_time": "2025-10-20 17:21:34.367071"
+}

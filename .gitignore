@@ -1,0 +1,136 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+.conda/
+aimadds102025/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment Variables (CRITICAL - NEVER COMMIT)
+.env
+.env.local
+.env.production
+.env.*.local
+*.env
+
+# Secrets and Keys (CRITICAL - NEVER COMMIT)
+aimadds-key.json
+*-key.json
+*.pem
+*.key
+*.cert
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+data/users.json
+data/jobs/
+data/chromadb/
+data/processed/
+data/raw/
+
+# Outputs and Reports (Generated files)
+outputs/
+frontend_results/
+logs/
+*.log
+*.pptx
+*.xlsx
+*.pdf
+
+# Test Results
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+*.mo
+*.pot
+
+# Conda
+conda_requirements.txt
+environment.lock.yml
+
+# Node modules (Frontend)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+frontend/build/
+frontend/.env.local
+frontend/.env.production
+
+# System Files
+Thumbs.db
+.DS_Store
+*.bak
+*.tmp
+*.swp
+
+# Cloud Deployment (Sensitive)
+.gcloud/
+.config/gcloud/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# Temporary Files
+temp/
+tmp/
+*.temp
+
+# Package Files
+*.tar.gz
+*.zip
+*.rar
+
+# Windows
+$RECYCLE.BIN/
+Desktop.ini
+
+# MacOS
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Project Specific - Sensitive Data
+data/users.json
+audit_results_*.json
+consolidator_test_results_*.json
+fmp_as_reported_test_*.json

@@ -1,0 +1,13 @@
+PDF PLACEHOLDER DIAGNOSTIC REPORT
+================================================================================
+PDF: outputs\hood_analysis\revolutionary\HOOD_REVOLUTIONARY_Report_20251023.pdf
+Analysis Time: 2025-10-24 15:49:41.042876
+
+Has Placeholders: False
+Total Sections: 17
+Sections with Data: 9
+Sections with Placeholders: 0
+
+
+DETAILED FINDINGS:
+--------------------------------------------------------------------------------

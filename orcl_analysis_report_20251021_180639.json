@@ -1,0 +1,27 @@
+{
+  "job_analysis": {
+    "job_id": "Unknown",
+    "ticker": "Unknown",
+    "status": "Unknown",
+    "created_at": "Unknown",
+    "completed_at": "Unknown",
+    "agent_outputs": {},
+    "total_data_points": 0,
+    "synthesis_data": {},
+    "report_generation": {}
+  },
+  "data_flow_comparison": {
+    "agent_data_available": {},
+    "synthesis_coverage": {},
+    "potential_data_loss": [
+      "No synthesis data found!"
+    ]
+  },
+  "raw_job_metadata": {
+    "job_id": null,
+    "ticker": null,
+    "status": null,
+    "agent_list": [],
+    "synthesis_keys": []
+  }
+}

@@ -1,0 +1,69 @@
+================================================================================
+REPORTING DATA FLOW DIAGNOSTIC
+================================================================================
+
+1. SYNTHESIS CONFIGURATION:
+--------------------------------------------------------------------------------
+{
+  "loaded": false,
+  "error": "cannot import name 'SYNTHESIS_CONFIG' from 'src.config.synthesis_config' (C:\\Users\\smaan\\OneDrive\\AIMADDS102025\\src\\config\\synthesis_config.py)"
+}
+
+2. SYNTHESIS OUTPUT LOCATIONS:
+--------------------------------------------------------------------------------
+
+outputs/synthesis:
+{
+Traceback (most recent call last):
+  "exists": false,
+  "path": "outputs\\synthesis"
+}
+
+outputs/consolidated:
+{
+  "exists": false,
+  "path": "outputs\\consolidated"
+}
+
+data/synthesis:
+{
+  "exists": false,
+  "path": "data\\synthesis"
+}
+
+data/consolidated:
+{
+  "exists": false,
+  "path": "data\\consolidated"
+}
+
+outputs/pltr_analysis/synthesis:
+{
+  "exists": false,
+  File "C:\Users\smaan\OneDrive\AIMADDS102025\diagnose_reporting_data_flow.py", line 217, in <module>
+  "path": "outputs\\pltr_analysis\\synthesis"
+}
+
+outputs/pltr_analysis/consolidated:
+{
+  "exists": false,
+  "path": "outputs\\pltr_analysis\\consolidated"
+}
+
+3. CONSOLIDATED DATA FILES:
+--------------------------------------------------------------------------------
+Found 0 consolidated files:
+
+4. REPORT GENERATOR DATA SOURCES:
+--------------------------------------------------------------------------------
+    main()
+  File "C:\Users\smaan\OneDrive\AIMADDS102025\diagnose_reporting_data_flow.py", line 163, in main
+    generator_info = check_report_generator_imports()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\smaan\OneDrive\AIMADDS102025\diagnose_reporting_data_flow.py", line 99, in check_report_generator_imports
+    content = f.read()
+              ^^^^^^^^
+  File "C:\Users\smaan\miniconda3\envs\AIMADDS102025\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 6528: character maps to <undefined>

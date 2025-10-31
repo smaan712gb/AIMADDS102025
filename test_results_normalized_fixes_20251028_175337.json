@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-10-28T17:52:28.728291",
+  "tests_passed": 7,
+  "tests_failed": 0,
+  "test_details": [
+    {
+      "test": "Smart Data Accessor - Basic Functionality",
+      "passed": true,
+      "details": "Correctly returned normalized data (quality: 85)"
+    },
+    {
+      "test": "Financial Analyst - Creates Normalized Financials",
+      "passed": true,
+      "details": "Created normalized financials with quality score: 75/100"
+    },
+    {
+      "test": "Financial Deep Dive - Uses Normalized Data",
+      "passed": true,
+      "details": "Correctly uses normalized data with quality score 87/100"
+    },
+    {
+      "test": "Integration Planner - Uses Normalized for Synergies",
+      "passed": true,
+      "details": "Uses normalized EBITDA ($400K) instead of raw ($350K) for synergy baseline"
+    },
+    {
+      "test": "Competitive Benchmarking - Uses Normalized Metrics",
+      "passed": true,
+      "details": "Uses normalized revenue ($5M) instead of raw ($4.8M) for peer comparisons"
+    },
+    {
+      "test": "Fallback Mechanism - Uses Raw When Normalized Unavailable",
+      "passed": true,
+      "details": "Correctly falls back to raw data when normalized unavailable"
+    },
+    {
+      "test": "Quality Gate - Rejects Low Quality Normalized Data",
+      "passed": true,
+      "details": "Correctly rejects low-quality normalized data (score: 45) and uses raw"
+    }
+  ]
+}

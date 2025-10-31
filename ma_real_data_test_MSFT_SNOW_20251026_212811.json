@@ -1,0 +1,18 @@
+{
+  "accretion_dilution": {
+    "status": "SUCCESS",
+    "summary": "Analysis complete"
+  },
+  "sources_uses": {
+    "status": "SUCCESS",
+    "summary": "SOURCES & USES SUMMARY\n\nTotal Transaction Size: $122.4B\n\nUSES:\n\u2022 Purchase Price: $115.9B (94.7%)\n\u2022 Refinance Debt: $2.7B (2.2%)\n\u2022 Fees: $2317.1M + $1510.7M\n\nSOURCES:\n\u2022 Cash: $24.2B (19.8%)\n\u2022 New Debt: $24.8B (20.2%)\n\u2022 New Equity: $73.4B (60.0%)\n\nPRO FORMA CAPITALIZATION:\n\u2022 Total Debt: $85.3B\n\u2022 Debt/EBITDA: 0.5x\n\u2022 Debt/Cap: 2.1%"
+  },
+  "contribution": {
+    "status": "SUCCESS",
+    "summary": "CONTRIBUTION ANALYSIS SUMMARY\n\nFINANCIAL CONTRIBUTION:\n\u2022 Acquirer: 100.3% (Revenue, EBITDA, NI weighted)\n\u2022 Target: -0.3%\n\nOWNERSHIP SPLIT:\n\u2022 Acquirer Shareholders: 98.2%\n\u2022 Target Shareholders: 1.8%\n\nFAIRNESS ASSESSMENT: GOOD\nFAIR - Ownership aligns with contribution\n\nConclusion: PROCEED - Fair exchange based on relative contributions"
+  },
+  "exchange_ratio": {
+    "status": "SUCCESS",
+    "summary": "EXCHANGE RATIO ANALYSIS SUMMARY\n\nPROPOSED TERMS:\n\u2022 Exchange Ratio: 0.6650x acquirer shares per target share\n\u2022 Implied Price: $348.22 per target share\n\u2022 Current Price: $257.94\n\u2022 Premium: +35.0%\n\nVALUATION-BASED RATIOS:\n\u2022 DCF-Based: 0.6650x\n\u2022 P/E-Based: -0.2821x\n\u2022 P/B-Based: 0.1951x\n\nFAIRNESS ASSESSMENT: GENEROUS\nSTRONG ACCEPT - Highly favorable terms for target shareholders"
+  }
+}

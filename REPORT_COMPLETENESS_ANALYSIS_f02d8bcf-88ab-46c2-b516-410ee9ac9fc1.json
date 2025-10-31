@@ -1,0 +1,1070 @@
+{
+  "excel": {
+    "total_sheets": 14,
+    "sheets": {
+      "Executive Dashboard": {
+        "rows": 8,
+        "columns": 6,
+        "has_data": true,
+        "sample": [
+          [
+            "M&A DUE DILIGENCE EXECUTIVE DASHBOARD",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Target: Palantir Technologies Inc. | Analysis Date: 2025-10-26",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "CONTROL PANEL": {
+        "rows": 43,
+        "columns": 8,
+        "has_data": true,
+        "sample": [
+          [
+            "ALPHA MASTERS M&A ANALYSIS - CONTROL PANEL",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Analysis Powered by Validated Multi-Agent System - No Placeholders",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Normalization Ledger": {
+        "rows": 28,
+        "columns": 8,
+        "has_data": true,
+        "sample": [
+          [
+            "FINANCIAL NORMALIZATION LEDGER - EARNINGS QUALITY ANALYSIS",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Agent: Financial Analyst | Quality Score: 100/100",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Anomaly Log": {
+        "rows": 6,
+        "columns": 7,
+        "has_data": true,
+        "sample": [
+          [
+            "ANOMALY DETECTION LOG - ADVANCED FINANCIAL DEEP DIVE",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Source: Consolidated Findings | Anomalies Detected: 0 | Risk Level: Low",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Legal Risk Register": {
+        "rows": 6,
+        "columns": 6,
+        "has_data": true,
+        "sample": [
+          [
+            "LEGAL RISK REGISTER - QUANTIFIED CONTRACT ANALYSIS",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Agent: Legal Counsel | Legal Risks Identified: 2",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Risk Assessment": {
+        "rows": 14,
+        "columns": 6,
+        "has_data": true,
+        "sample": [
+          [
+            "COMPREHENSIVE RISK ASSESSMENT - GOLDMAN SACHS M&A STANDARD",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Agent: Risk Assessment | Overall Score: 65/100 | Rating: HIGH RISK",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Tax Structuring": {
+        "rows": 7,
+        "columns": 6,
+        "has_data": true,
+        "sample": [
+          [
+            "TAX STRUCTURING ANALYSIS - BIG 4 M&A TAX STANDARD",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Agent: Tax Structuring | Recommendation: Stock Purchase with 338(h)(10) Election",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "LBO Model": {
+        "rows": 9,
+        "columns": 8,
+        "has_data": true,
+        "sample": [
+          [
+            "LEVERAGED BUYOUT (LBO) ANALYSIS - PRIVATE EQUITY STANDARD",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Agent: Financial Analyst (LBO Module) | IRR: 31.4% | MoM: 6.76x",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Validation Tear Sheet": {
+        "rows": 6,
+        "columns": 5,
+        "has_data": true,
+        "sample": [
+          [
+            "EXTERNAL VALIDATION - OUR ANALYSIS VS STREET CONSENSUS",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Metric",
+            "Our Analysis",
+            "Street Consensus",
+            "Delta",
+            "Explanation"
+          ]
+        ]
+      },
+      "Agent Collaboration": {
+        "rows": 15,
+        "columns": 6,
+        "has_data": true,
+        "sample": [
+          [
+            "AGENT COLLABORATION MAP - 13 SPECIALIST AGENTS",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Agent Name",
+            "Primary Function",
+            "Status",
+            "Key Findings",
+            "Confidence",
+            "Cross-Validated By"
+          ]
+        ]
+      },
+      "3-Statement Model": {
+        "rows": 28,
+        "columns": 8,
+        "has_data": true,
+        "sample": [
+          [
+            "3-STATEMENT MODEL (Built from Normalized Financials)",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Source: Synthesized Financial Data | Quality Score: 95/100",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "DCF Model": {
+        "rows": 6,
+        "columns": 6,
+        "has_data": true,
+        "sample": [
+          [
+            "DCF VALUATION MODEL",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "KEY ASSUMPTIONS",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Competitive Benchmarking": {
+        "rows": 21,
+        "columns": 8,
+        "has_data": true,
+        "sample": [
+          [
+            "COMPETITIVE BENCHMARKING ANALYSIS",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Source: Competitive Benchmarking Agent | Market Position Assessment",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "Macro Scenarios": {
+        "rows": 19,
+        "columns": 8,
+        "has_data": true,
+        "sample": [
+          [
+            "MACROECONOMIC SCENARIO ANALYSIS",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Source: Macroeconomic Analyst | Economic Environment Assessment",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    }
+  },
+  "ppt": {
+    "total_slides": 26,
+    "slides": [
+      {
+        "slide_number": 1,
+        "title": "",
+        "shapes_count": 4,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 2,
+        "title": "Executive Summary",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 3,
+        "title": "Our 'Glass Box' Analysis Advantage",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 4,
+        "title": "Deal Overview",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 5,
+        "title": "Key Metrics Dashboard",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": true,
+        "has_chart": false
+      },
+      {
+        "slide_number": 6,
+        "title": "Financial Overview",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 7,
+        "title": "Working Capital Analysis",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 8,
+        "title": "Financial Deep Dive - Key Insights",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 9,
+        "title": "Financial Normalization Adjustments",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 10,
+        "title": "Valuation Analysis - Multi-Scenario DCF",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": true,
+        "has_chart": false
+      },
+      {
+        "slide_number": 11,
+        "title": "Critical Finding: Statistical Anomaly",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 12,
+        "title": "Competitive Benchmarking",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 13,
+        "title": "Tax Structure Optimization",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 14,
+        "title": "Macroeconomic Sensitivity Analysis",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 15,
+        "title": "LBO Analysis (Private Equity Perspective)",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 16,
+        "title": "Earnings Quality & Sustainability",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 17,
+        "title": "Legal Analysis: Key Findings",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 18,
+        "title": "Risk Assessment: HIGH RISK",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 19,
+        "title": "Top Risks & Mitigation Strategies",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 20,
+        "title": "External Validation: Moderate Confidence",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 21,
+        "title": "Integration Blueprint",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 22,
+        "title": "Integration Blueprint",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 23,
+        "title": "Strategic Rationale",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 24,
+        "title": "Investment Recommendation",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 25,
+        "title": "Agent-Generated Due Diligence Questions",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      },
+      {
+        "slide_number": 26,
+        "title": "Analysis Methodology",
+        "shapes_count": 2,
+        "has_text": true,
+        "has_table": false,
+        "has_chart": false
+      }
+    ]
+  },
+  "pdf": {
+    "total_pages": 21,
+    "pages": [
+      {
+        "page_number": 1,
+        "word_count": 23,
+        "headers": [
+          "Page 1",
+          "REVOLUTIONARY DUE DILIGENCE",
+          "REPORT",
+          "Target: Palantir Technologies Inc.",
+          "Acquirer: aapl"
+        ]
+      },
+      {
+        "page_number": 2,
+        "word_count": 94,
+        "headers": [
+          "Page 2",
+          "TABLE OF CONTENTS",
+          "1. Executive Summary",
+          "2. Deal Overview",
+          "3. Financial Analysis"
+        ]
+      },
+      {
+        "page_number": 3,
+        "word_count": 119,
+        "headers": [
+          "Page 3",
+          "1. EXECUTIVE SUMMARY",
+          "Executive Overview",
+          "ensures complete transparency and superior accuracy.",
+          "Key Metrics Dashboard"
+        ]
+      },
+      {
+        "page_number": 4,
+        "word_count": 48,
+        "headers": [
+          "Page 4",
+          "2. DEAL OVERVIEW",
+          "Deal Overview",
+          "Parameter",
+          "Target Company"
+        ]
+      },
+      {
+        "page_number": 5,
+        "word_count": 22,
+        "headers": [
+          "Page 5",
+          "3. FINANCIAL ANALYSIS",
+          "Financial Overview",
+          "Metric",
+          "Quality"
+        ]
+      },
+      {
+        "page_number": 6,
+        "word_count": 138,
+        "headers": [
+          "Page 6",
+          "3A. FINANCIAL NORMALIZATION PROCESS",
+          "Financial Normalization Process",
+          "Adjustment Type",
+          "Reported"
+        ]
+      },
+      {
+        "page_number": 7,
+        "word_count": 35,
+        "headers": [
+          "Page 7",
+          "3B. STATISTICAL ANOMALY DETECTION",
+          "Statistical Anomaly Detection"
+        ]
+      },
+      {
+        "page_number": 8,
+        "word_count": 28,
+        "headers": [
+          "Page 8",
+          "4. FINANCIAL DEEP DIVE",
+          "Financial Deep Dive - Operational Metrics",
+          "Working Capital Analysis:",
+          "Metric"
+        ]
+      },
+      {
+        "page_number": 9,
+        "word_count": 156,
+        "headers": [
+          "Page 9",
+          "5. VALUATION ANALYSIS",
+          "Valuation Analysis - Multi-Scenario Approach",
+          "Scenario",
+          "Enterprise Value"
+        ]
+      },
+      {
+        "page_number": 10,
+        "word_count": 165,
+        "headers": [
+          "Page 10",
+          "5A. LBO ANALYSIS (PRIVATE EQUITY PERSPECTIVE)",
+          "LBO Analysis - Private Equity Perspective",
+          "Entry Assumptions",
+          "Metric"
+        ]
+      },
+      {
+        "page_number": 11,
+        "word_count": 77,
+        "headers": [
+          "Page 11",
+          "Multiple of Money Sensitivity:",
+          "EBITDA Growth \u2192",
+          "Exit Multiple \u2193"
+        ]
+      },
+      {
+        "page_number": 12,
+        "word_count": 28,
+        "headers": [
+          "Page 12",
+          "6. COMPETITIVE BENCHMARKING",
+          "Competitive Benchmarking",
+          "Competitive positioning analysis:",
+          "Market Share: N/A"
+        ]
+      },
+      {
+        "page_number": 13,
+        "word_count": 11,
+        "headers": [
+          "Page 13",
+          "7. MACROECONOMIC ANALYSIS",
+          "Macroeconomic Analysis",
+          "Macroeconomic analysis in progress."
+        ]
+      },
+      {
+        "page_number": 14,
+        "word_count": 22,
+        "headers": [
+          "Page 14",
+          "8. EXTERNAL VALIDATION",
+          "External Validation",
+          "Street Consensus Comparison:"
+        ]
+      },
+      {
+        "page_number": 15,
+        "word_count": 94,
+        "headers": [
+          "Page 15",
+          "8A. VALIDATION TEAR SHEET",
+          "Validation Tear Sheet",
+          "data. Below is a side-by-side comparison.",
+          "Metric"
+        ]
+      },
+      {
+        "page_number": 16,
+        "word_count": 21,
+        "headers": [
+          "Page 16",
+          "9. RISK ASSESSMENT",
+          "Risk Assessment"
+        ]
+      },
+      {
+        "page_number": 17,
+        "word_count": 102,
+        "headers": [
+          "Page 17",
+          "9A. LEGAL RISK REGISTER",
+          "Legal Risk Register",
+          "Risk Category",
+          "# Contracts"
+        ]
+      },
+      {
+        "page_number": 18,
+        "word_count": 156,
+        "headers": [
+          "Page 18",
+          "9B. TAX STRUCTURING RECOMMENDATION",
+          "Tax Structuring Recommendation - Big 4 M&A; Tax Standard",
+          "Structure Comparison",
+          "Structure"
+        ]
+      },
+      {
+        "page_number": 19,
+        "word_count": 87,
+        "headers": [
+          "Page 19",
+          "10. INVESTMENT RECOMMENDATION",
+          "Investment Recommendation",
+          "RECOMMENDATION: Proceed with caution",
+          "Key Decision Factors:"
+        ]
+      },
+      {
+        "page_number": 20,
+        "word_count": 123,
+        "headers": [
+          "Page 20",
+          "11. AGENT COLLABORATION ANALYSIS",
+          "Agent Collaboration Analysis",
+          "Primary Function",
+          "Key Contribution"
+        ]
+      },
+      {
+        "page_number": 21,
+        "word_count": 114,
+        "headers": [
+          "Page 21",
+          "APPENDIX: AGENT METHODOLOGIES",
+          "Agent Methodologies & Data Sources",
+          "Data Sources:",
+          "\u007f SEC EDGAR Database - 10-K, 10-Q, 8-K filings"
+        ]
+      }
+    ]
+  },
+  "critical_gaps": {
+    "Accretion/Dilution Analysis": {
+      "status": "MISSING",
+      "importance": "CRITICAL",
+      "description": "EPS impact analysis showing whether deal is accretive or dilutive",
+      "required_data": [
+        "Acquirer financials",
+        "Target financials",
+        "Deal structure",
+        "Financing mix",
+        "Cost of capital"
+      ]
+    },
+    "Sources & Uses": {
+      "status": "MISSING",
+      "importance": "CRITICAL",
+      "description": "Detailed breakdown of deal funding sources and uses",
+      "required_data": [
+        "Purchase price",
+        "Debt financing",
+        "Equity financing",
+        "Transaction fees"
+      ]
+    },
+    "Pro Forma Financials": {
+      "status": "PARTIAL",
+      "importance": "CRITICAL",
+      "description": "Combined entity financials post-merger",
+      "required_data": [
+        "Target financials",
+        "Acquirer financials",
+        "Synergies",
+        "Purchase accounting"
+      ]
+    },
+    "Contribution Analysis": {
+      "status": "MISSING",
+      "importance": "HIGH",
+      "description": "Revenue/EBITDA/EPS contribution from each party",
+      "required_data": [
+        "Standalone financials for both parties"
+      ]
+    },
+    "Exchange Ratio Analysis": {
+      "status": "MISSING",
+      "importance": "HIGH",
+      "description": "Stock exchange ratio and premium analysis",
+      "required_data": [
+        "Stock prices",
+        "Shares outstanding",
+        "Exchange ratio"
+      ]
+    },
+    "Financing Structure": {
+      "status": "PARTIAL",
+      "importance": "CRITICAL",
+      "description": "Debt/equity mix and financing costs",
+      "required_data": [
+        "Debt capacity",
+        "Interest rates",
+        "Equity dilution"
+      ]
+    },
+    "Synergy Validation": {
+      "status": "PARTIAL",
+      "importance": "HIGH",
+      "description": "Detailed synergy assumptions and validation",
+      "required_data": [
+        "Cost synergies",
+        "Revenue synergies",
+        "Timeline",
+        "Probability"
+      ]
+    },
+    "Fairness Opinion": {
+      "status": "MISSING",
+      "importance": "MEDIUM",
+      "description": "Fairness opinion framework and analysis",
+      "required_data": [
+        "Valuation ranges",
+        "Precedent analysis",
+        "Premiums analysis"
+      ]
+    }
+  },
+  "recommendations": {
+    "Phase 1 - Critical M&A Components (Immediate)": [
+      "1. Implement Accretion/Dilution Analysis Agent",
+      "   - Create dedicated agent for EPS impact analysis",
+      "   - Calculate pro forma EPS with various financing scenarios",
+      "   - Show breakeven synergy levels",
+      "   - Generate sensitivity tables",
+      "",
+      "2. Add Sources & Uses Table Generator",
+      "   - Purchase price allocation",
+      "   - Debt and equity financing breakdown",
+      "   - Transaction costs and fees",
+      "   - Working capital adjustments",
+      "",
+      "3. Build Pro Forma Financial Model",
+      "   - Combined income statement",
+      "   - Combined balance sheet",
+      "   - Combined cash flow statement",
+      "   - Purchase accounting adjustments",
+      "   - Goodwill calculation"
+    ],
+    "Phase 2 - Enhanced Analysis (High Priority)": [
+      "4. Develop Contribution Analysis",
+      "   - Revenue contribution by entity",
+      "   - EBITDA contribution analysis",
+      "   - EPS contribution breakdown",
+      "   - Ownership analysis",
+      "",
+      "5. Create Exchange Ratio Calculator",
+      "   - Calculate implied exchange ratios",
+      "   - Premium/discount analysis",
+      "   - Trading range analysis",
+      "   - Relative valuation comparison",
+      "",
+      "6. Enhance Synergy Analysis",
+      "   - Detailed synergy waterfall",
+      "   - Probability-weighted synergies",
+      "   - Synergy realization timeline",
+      "   - Risk-adjusted synergy values"
+    ],
+    "Phase 3 - Data Flow & Integration (Medium Priority)": [
+      "7. Fix Data Pipeline Issues",
+      "   - Ensure all agent outputs flow to synthesis",
+      "   - Add data validation checkpoints",
+      "   - Implement fallback mechanisms",
+      "   - Add data traceability",
+      "",
+      "8. Improve Report Generation",
+      "   - Add more dynamic charts/visualizations",
+      "   - Implement executive summary auto-generation",
+      "   - Add cross-referencing between sections",
+      "   - Improve formatting consistency",
+      "",
+      "9. Add Acquirer Company Analysis",
+      "   - Currently only analyzes target",
+      "   - Need parallel analysis of acquirer",
+      "   - Required for pro forma and accretion/dilution"
+    ],
+    "Phase 4 - Advanced Features (Future)": [
+      "10. Implement Fairness Opinion Framework",
+      "11. Add Market Reaction Analysis",
+      "12. Create Deal Scorecard",
+      "13. Build Interactive Dashboard",
+      "14. Add Scenario Comparison Tool"
+    ]
+  }
+}

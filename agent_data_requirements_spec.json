@@ -1,0 +1,91 @@
+{
+  "financial_analyst": {
+    "required_data": [
+      "normalized_financials",
+      "raw_financial_data"
+    ],
+    "critical_arrays": [
+      "income_statement",
+      "balance_sheet",
+      "cash_flow"
+    ],
+    "must_be_normalized": true,
+    "reason": "Valuation models require clean data without corrupted years"
+  },
+  "financial_deep_dive": {
+    "required_data": [
+      "normalized_financials",
+      "financial_metrics"
+    ],
+    "critical_arrays": [
+      "income_statement"
+    ],
+    "must_be_normalized": true,
+    "reason": "Operational efficiency analysis needs normalized margins"
+  },
+  "competitive_benchmarking": {
+    "required_data": [
+      "normalized_financials OR raw_financial_data"
+    ],
+    "critical_arrays": [
+      "income_statement"
+    ],
+    "must_be_normalized": false,
+    "reason": "Can use latest year ratios from either source, but normalized preferred"
+  },
+  "macroeconomic_analyst": {
+    "required_data": [
+      "raw_financial_data",
+      "analyst_estimates"
+    ],
+    "critical_arrays": [
+      "income_statement"
+    ],
+    "must_be_normalized": false,
+    "reason": "Needs original data for economic correlation analysis"
+  },
+  "risk_assessment": {
+    "required_data": [
+      "normalized_financials",
+      "all_agent_outputs"
+    ],
+    "critical_arrays": [
+      "income_statement"
+    ],
+    "must_be_normalized": true,
+    "reason": "Risk scoring needs clean normalized metrics"
+  },
+  "tax_structuring": {
+    "required_data": [
+      "normalized_financials",
+      "balance_sheet"
+    ],
+    "critical_arrays": [
+      "balance_sheet"
+    ],
+    "must_be_normalized": false,
+    "reason": "Tax basis uses original book values, not normalized"
+  },
+  "deal_structuring": {
+    "required_data": [
+      "normalized_financials",
+      "valuation_models"
+    ],
+    "critical_arrays": [
+      "N/A"
+    ],
+    "must_be_normalized": false,
+    "reason": "Uses DCF outputs, not direct financial data"
+  },
+  "integration_planner": {
+    "required_data": [
+      "normalized_financials",
+      "competitive_analysis"
+    ],
+    "critical_arrays": [
+      "income_statement"
+    ],
+    "must_be_normalized": true,
+    "reason": "Synergy calculations need normalized baselines"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "deal_id": "JPM-GS-20251023-150958",
+  "target_company": "Goldman Sachs Group, Inc.",
+  "target_ticker": "GS",
+  "acquirer_company": "JPMorgan Chase & Co.",
+  "acquirer_ticker": "JPM",
+  "deal_type": "Strategic Acquisition",
+  "deal_value": 26000000000,
+  "deal_structure": "Cash and Stock",
+  "currency": "USD",
+  "investment_thesis": "Transform Wall Street's #2 investment bank into the dominant global investment bank through consolidation of client relationships, trading platforms, and M&A advisory business",
+  "strategic_rationale": "Creates the world's most powerful investment bank with unmatched global presence, premier client roster, and comprehensive financial services capabilities",
+  "agent_outputs": [],
+  "financial_data": {},
+  "metadata": {
+    "status": "failed",
+    "created_at": "2025-10-23T15:09:58.642389"
+  },
+  "errors": [
+    "Orchestration error: 'agent_statuses'"
+  ],
+  "warnings": []
+}

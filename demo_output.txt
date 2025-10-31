@@ -1,0 +1,238 @@
+2025-10-20 16:30:33.990 | INFO     | src.core.config:__init__:84 - Configuration loaded successfully
+2025-10-20 16:30:33.990 | INFO     | src.core.llm_factory:_create_claude:64 - Creating Claude model: claude-sonnet-4-5
+2025-10-20 16:30:33.990 | INFO     | src.core.llm_factory:_create_gemini:79 - Creating Gemini model: gemini-2.5-pro
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760992234.005615   25676 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+2025-10-20 16:30:34.007 | INFO     | src.agents.base_agent:__init__:31 - Initialized Financial Analyst Agent with claude model
+2025-10-20 16:30:34.007 | INFO     | src.agents.base_agent:__init__:31 - Initialized Competitive Benchmarking Agent with claude model
+2025-10-20 16:30:34.007 | INFO     | src.agents.base_agent:__init__:31 - Initialized Macroeconomic Analyst Agent with gemini model
+2025-10-20 16:30:34.007 | INFO     | src.agents.base_agent:__init__:31 - Initialized Conversational Synthesis Agent with claude model
+2025-10-20 16:30:34.007 | INFO     | src.agents.base_agent:log_action:165 - [financial_analyst] Starting financial analysis for NVDA
+2025-10-20 16:30:34.007 | INFO     | src.integrations.fmp_client:fetch_all_financial_data:550 - Fetching comprehensive financial data for NVDA (extended=True)
+2025-10-20 16:30:34.128 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: income-statement-as-reported/NVDA
+2025-10-20 16:30:34.129 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: balance-sheet-statement-as-reported/NVDA
+2025-10-20 16:30:34.129 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: balance-sheet-statement/NVDA
+2025-10-20 16:30:34.129 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: company-outlook
+2025-10-20 16:30:34.133 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: financial-growth/NVDA
+2025-10-20 16:30:34.133 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: discounted-cash-flow/NVDA
+2025-10-20 16:30:34.136 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: cash-flow-statement-as-reported/NVDA
+2025-10-20 16:30:34.136 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: income-statement-growth/NVDA
+2025-10-20 16:30:34.137 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: income-statement/NVDA
+2025-10-20 16:30:34.138 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: cash-flow-statement-growth/NVDA
+2025-10-20 16:30:34.138 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: cash-flow-statement/NVDA
+2025-10-20 16:30:34.138 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: market-capitalization/NVDA
+2025-10-20 16:30:34.138 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: sec_filings/NVDA
+2025-10-20 16:30:34.139 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: ratios/NVDA
+2025-10-20 16:30:34.139 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: insider-trading
+2025-10-20 16:30:34.139 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: enterprise-values/NVDA
+2025-10-20 16:30:34.140 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: profile/NVDA
+2025-10-20 16:30:34.140 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: price-target/NVDA
+2025-10-20 16:30:34.141 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: key-metrics-ttm/NVDA
+2025-10-20 16:30:34.141 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: balance-sheet-statement/NVDA
+2025-10-20 16:30:34.141 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: ratios-ttm/NVDA
+2025-10-20 16:30:34.144 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: balance-sheet-statement-growth/NVDA
+2025-10-20 16:30:34.144 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: analyst-estimates/NVDA
+2025-10-20 16:30:34.144 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: key-metrics/NVDA
+2025-10-20 16:30:34.148 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: cash-flow-statement/NVDA
+2025-10-20 16:30:34.196 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: income-statement/NVDA
+2025-10-20 16:30:34.196 | INFO     | src.integrations.fmp_client:fetch_all_financial_data:616 - Completed fetching financial data for NVDA
+2025-10-20 16:30:34.200 | INFO     | src.agents.financial_analyst:_fetch_financial_data:251 - Successfully fetched extended financial data for NVDA
+2025-10-20 16:30:34.200 | INFO     | src.agents.base_agent:log_action:165 - [financial_analyst] Normalizing financial statements...
+2025-10-20 16:30:34.200 | INFO     | src.utils.financial_normalizer:normalize_financial_statements:66 - Starting comprehensive financial statement normalization
+2025-10-20 16:30:34.200 | INFO     | src.utils.financial_normalizer:normalize_financial_statements:125 - Normalization complete. Made 10 adjustments
+2025-10-20 16:30:34.200 | INFO     | src.agents.financial_analyst:_normalize_financial_statements:285 - Normalization complete. Quality score: 100/100
+2025-10-20 16:30:34.200 | INFO     | src.agents.base_agent:log_action:165 - [financial_analyst] Running advanced valuation suite...
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_full_valuation_suite:62 - Starting advanced valuation analysis
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_multi_scenario_dcf:116 - Running multi-scenario DCF analysis
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_multi_scenario_dcf:141 - Calculating base case DCF
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_multi_scenario_dcf:141 - Calculating optimistic case DCF
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_multi_scenario_dcf:141 - Calculating pessimistic case DCF
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_sensitivity_analysis:376 - Running sensitivity analysis
+2025-10-20 16:30:34.200 | INFO     | src.utils.advanced_valuation:run_monte_carlo_valuation:442 - Running Monte Carlo simulation with 10000 iterations
+2025-10-20 16:30:34.296 | ERROR    | src.agents.financial_analyst:_run_advanced_valuation:324 - Error in advanced valuation: float division by zero
+2025-10-20 16:30:34.296 | INFO     | src.agents.base_agent:log_action:165 - [financial_analyst] Analyzing long-term trends...
+2025-10-20 16:30:34.296 | INFO     | src.agents.base_agent:log_action:165 - [financial_analyst] Analyzing seasonality...
+2025-10-20 16:31:34.315 | WARNING  | src.agents.financial_analyst:_generate_enhanced_insights:770 - Claude API call timed out, generating basic insights...
+2025-10-20 16:31:34.316 | INFO     | src.agents.base_agent:log_action:165 - [financial_analyst] Financial analysis complete
+2025-10-20 16:31:34.316 | INFO     | src.agents.base_agent:log_action:165 - [competitive_benchmarking] Starting competitive benchmarking for NVDA
+2025-10-20 16:31:34.393 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: stock_peers
+2025-10-20 16:31:34.393 | INFO     | src.agents.base_agent:log_action:165 - [competitive_benchmarking] Identified 0 peer companies
+2025-10-20 16:31:34.393 | INFO     | src.agents.base_agent:log_action:165 - [competitive_benchmarking] Completed parallel analysis of 0 peers
+2025-10-20 16:31:34.468 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: profile/NVDA
+2025-10-20 16:31:34.492 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: sector-performance
+2025-10-20 16:31:34.492 | INFO     | src.agents.base_agent:log_action:165 - [competitive_benchmarking] Completed sector-wide analysis
+2025-10-20 16:31:34.492 | DEBUG    | src.agents.base_agent:update_state:176 - [competitive_benchmarking] State update: ['competitive_benchmarking', 'peers_analyzed', 'timestamp']
+2025-10-20 16:31:34.492 | INFO     | src.agents.base_agent:log_action:165 - [competitive_benchmarking] Competitive benchmarking analysis complete
+2025-10-20 16:31:34.492 | INFO     | src.agents.base_agent:log_action:165 - [macroeconomic_analyst] Starting macroeconomic analysis for NVDA
+2025-10-20 16:31:34.565 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: treasury
+2025-10-20 16:31:34.683 | DEBUG    | src.integrations.fmp_client:_make_request:58 - FMP API request successful: economic_calendar
+2025-10-20 16:31:34.683 | ERROR    | src.agents.base_agent:log_action:161 - [macroeconomic_analyst] Error fetching economic indicators: unsupported operand type(s) for -: 'float' and 'NoneType'
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [macroeconomic_analyst] Fetched current economic indicators
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [macroeconomic_analyst] Completed correlation analysis
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [macroeconomic_analyst] Completed sensitivity analysis
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [macroeconomic_analyst] Generated 4 scenario models
+2025-10-20 16:31:34.683 | DEBUG    | src.agents.base_agent:update_state:176 - [macroeconomic_analyst] State update: ['macroeconomic_analysis', 'timestamp']
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [macroeconomic_analyst] Macroeconomic analysis complete
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [conversational_synthesis] Initialized conversational analysis state
+2025-10-20 16:31:34.683 | INFO     | src.agents.base_agent:log_action:165 - [conversational_synthesis] Processing question: Why is the company losing market share?
+2025-10-20 16:31:34.690 | INFO     | src.agents.base_agent:log_action:165 - [conversational_synthesis] Processing question: What are the biggest risks I should worry about?
+2025-10-20 16:31:46.145 | INFO     | src.agents.base_agent:log_action:165 - [conversational_synthesis] Processing question: How does this compare to competitors?
+
+≡ƒÜÇ Starting Revolutionary M&A Analysis Demo...
+
+================================================================================
+≡ƒÜÇ REVOLUTIONARY M&A ANALYSIS SYSTEM - SECOND-ORDER INSIGHTS DEMO
+================================================================================
+
+Demonstrating how the system connects disparate information
+to generate insights humans would miss...
+
+≡ƒôª Initializing multi-agent system...
+≡ƒñû Initializing specialized agents...
+
+≡ƒÄ» Target Company: NVDA
+================================================================================
+
+≡ƒÆ░ STEP 1: Running Financial Analysis...
+--------------------------------------------------------------------------------
+Γ£à Financial health score: 100.0/100
+Γ£à DCF Valuation: $0.00/share
+
+≡ƒÅå STEP 2: Running Competitive Benchmarking...
+--------------------------------------------------------------------------------
+Γ£à Competitive Position: Unknown
+Γ£à Peers Analyzed: 0
+
+≡ƒîì STEP 3: Running Macroeconomic Analysis...
+--------------------------------------------------------------------------------
+Γ£à Scenarios Generated: 4
+Γ£à Economic Insights: 4
+
+≡ƒöì STEP 4: Running Anomaly Detection...
+--------------------------------------------------------------------------------
+Γ£à Trained on 8 periods
+Γ£à Anomalies Detected: 2
+Γ£à Risk Level: Critical
+
+
+≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ
+GENERATING SECOND-ORDER INSIGHTS
+≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ≡ƒîƒ
+
+
+================================================================================
+≡ƒºá SECOND-ORDER INSIGHT ENGINE - CONNECTING THE DOTS
+================================================================================
+
+≡ƒöù CONNECTION 1: Revenue Growth in Full Context
+--------------------------------------------------------------------------------
+≡ƒöù CONNECTION 2: Inventory Anomalies + Revenue Dynamics
+--------------------------------------------------------------------------------
+Γ¥î FIRST-ORDER: Inventory is Inventory is 40.0% above normal - WARNING: possible slowing sales or obsolete inventory
+
+Γ£à SECOND-ORDER INSIGHT:
+Inventory anomaly detected: 2800.0M vs expected 2000.0M (z-score: 4.0). 
+
+≡ƒôè CONSEQUENCE CHAIN:
+1. OPERATIONAL: Inventory build suggests demand forecasting error or product transition issues
+2. COMPETITIVE: Revenue underperforms peers by 0.0%, indicating    inventory is building BECAUSE customers are choosing competitors
+3. FINANCIAL: High inventory = cash trapped in working capital, reducing financial flexibility
+4. STRATEGIC RISK: If inventory is obsolete (likely given sales underperformance),    expect future write-downs of 420.0M-840.0M (15-30% haircut)
+
+≡ƒÄ» HIDDEN INSIGHT: The combination of rising inventory + declining competitive position is a classic 'death spiral' indicator. Competitors are winning, forcing aggressive discounting, which further erodes margin and brand perception. 
+
+ΓÜá∩╕Å URGENT ACTION: Immediate inventory audit, SKU-level analysis, and pricing review required.
+
+≡ƒöù CONNECTION 3: Margin Vulnerability Analysis
+--------------------------------------------------------------------------------
+≡ƒöù CONNECTION 4: Operational Anomalies ΓåÆ Strategic Impact
+--------------------------------------------------------------------------------
+
+================================================================================
+≡ƒôï SECOND-ORDER INSIGHTS - EXECUTIVE SUMMARY
+================================================================================
+
+≡ƒÜ¿ CRITICAL INSIGHTS: 1
+ΓÜá∩╕Å  HIGH PRIORITY: 0
+≡ƒôè TOTAL CONNECTIONS: 1
+
+KEY TAKEAWAYS:
+
+1. [CRITICAL] Inventory Revenue Mismatch
+   First-Order: Inventory is Inventory is 40.0% above normal - WARNING: possible slowing sales or obsolete inventory
+   Second-Order Impact: Inventory anomaly detected: 2800.0M vs expected 2000.0M (z-score: 4.0). 
+
+≡ƒôè CONSEQUENCE CHAIN:
+1. OPERATIONAL: Inventory build suggests demand forecasting error or product transition issues
+2. COMPETI...
+
+
+================================================================================
+≡ƒÆ¼ STEP 6: Initializing Conversational Interface
+================================================================================
+
+# M&A Due Diligence - Conversational Analysis Interface
+
+I've completed a comprehensive analysis. Here's what I found:
+
+## ≡ƒÆ░ Financial Analysis
+- **DCF Valuation:** $0.00 per share
+- **Financial Health Score:** 100.0/100
+
+## ≡ƒÅå Competitive Position
+- **Market Position:** Unknown
+- **Peers Analyzed:** 0
+
+## ≡ƒîì Macroeconomic Assessment
+- Revenue is highly cyclical, closely tracking GDP growth
+- Margins are vulnerable to input cost inflation (PPI)
+- Rising interest rates pose moderate risk to profitability
+
+
+---
+
+≡ƒÆ¼ **Interactive Mode Active**
+
+You can now ask me questions about the analysis:
+- "Why did margins decline last year?"
+- "Compare this company to its peers"
+- "Rerun the valuation assuming 15% revenue growth"
+- "Show me the bear case scenario"
+- "What are the biggest risks?"
+
+How can I help you explore this analysis?
+
+================================================================================
+≡ƒùú∩╕Å  CONVERSATIONAL QUERY DEMO
+================================================================================
+
+
+Γ¥ô User: Why is the company losing market share?
+--------------------------------------------------------------------------------
+≡ƒñû Agent: I'll analyze the available data to answer your question. Based on the current analysis state: **financial_analysis**: {'financial_health_score': 100, 'valuation': {}, 'ratio_analysis': {'profitability_ratios': {'gross_margin': 0.7498869705816992, 'operating_margin': 0.6241752683969747, 'net_margin': 0.558480271577124...
+
+**competitive_benchmarking**: {'summary': {'message': 'Insufficient peer data for competitive analysis', 'recommendation': 'Unable to provide competitive benchmarking'}, 'relati...
+
+
+Γ¥ô User: What are the biggest risks I should worry about?
+--------------------------------------------------------------------------------
+≡ƒñû Agent: # Key Risks Assessment
+
+Based on the due diligence analysis, here are the **biggest risks** you should prioritize:
+
+## 1. **Competitive Blind Spot (CRITICAL)**
+- **Issue**: There is insufficient peer data for competitive analysis
+- **Risk**: You're proceeding without understanding how this company stacks up against competitors in terms of pricing power, market share, margins, or operational efficiency
+- **Action Required**: This gap must be filled before closing. Request competitor benchmarking ...
+
+
+Γ¥ô User: How does this compare to competitors?
+--------------------------------------------------------------------------------
+≡ƒñû Agent: **Competitive Comparison:**
+
+...
+
+
+================================================================================
+Γ£à DEMO COMPLETE - SECOND-ORDER INSIGHTS SUCCESSFULLY DEMONSTRATED
+================================================================================

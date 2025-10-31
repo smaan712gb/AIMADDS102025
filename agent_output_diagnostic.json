@@ -1,0 +1,228 @@
+{
+  "timestamp": "2025-10-23T12:11:05.487120",
+  "agents_tested": 12,
+  "agents_with_output": 8,
+  "agents_without_output": 4,
+  "agent_results": {
+    "project_manager": {
+      "has_data": false,
+      "data_keys": [],
+      "data_size_bytes": 0,
+      "num_errors": 1,
+      "num_warnings": 0,
+      "errors": [
+        "'documents'"
+      ],
+      "status": "EMPTY_OUTPUT"
+    },
+    "financial_analyst": {
+      "has_data": false,
+      "data_keys": [],
+      "data_size_bytes": 0,
+      "num_errors": 1,
+      "errors": [
+        "Object of type DataFrame is not JSON serializable"
+      ],
+      "status": "EXCEPTION"
+    },
+    "financial_deep_dive": {
+      "has_data": true,
+      "data_keys": [
+        "working_capital",
+        "capex_analysis",
+        "customer_concentration",
+        "segment_analysis",
+        "debt_schedule",
+        "compensation_analysis",
+        "insights"
+      ],
+      "data_size_bytes": 8908,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "legal_counsel": {
+      "has_data": false,
+      "data_keys": [],
+      "data_size_bytes": 0,
+      "num_errors": 0,
+      "num_warnings": 2,
+      "errors": [],
+      "status": "EMPTY_OUTPUT"
+    },
+    "market_strategist": {
+      "has_data": true,
+      "data_keys": [
+        "competitive_analysis",
+        "market_position",
+        "industry_trends",
+        "sentiment_analysis",
+        "news_sentiment",
+        "institutional_positioning",
+        "growth_opportunities",
+        "strategic_recommendations"
+      ],
+      "data_size_bytes": 39557,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "competitive_benchmarking": {
+      "has_data": true,
+      "data_keys": [
+        "summary",
+        "relative_performance",
+        "competitive_position",
+        "strategic_insights",
+        "market_share_analysis",
+        "peer_rankings",
+        "ma_activity_context"
+      ],
+      "data_size_bytes": 3582,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "macroeconomic_analyst": {
+      "has_data": true,
+      "data_keys": [
+        "current_economic_conditions",
+        "correlation_analysis",
+        "sensitivity_analysis",
+        "scenario_models",
+        "insights",
+        "timestamp"
+      ],
+      "data_size_bytes": 5716,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "risk_assessment": {
+      "has_data": true,
+      "data_keys": [
+        "risk_matrix",
+        "risk_factors",
+        "risk_scores",
+        "risk_scenarios",
+        "mitigation_strategies",
+        "overall_assessment",
+        "critical_risks",
+        "total_risks_identified"
+      ],
+      "data_size_bytes": 4889,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "tax_structuring": {
+      "has_data": true,
+      "data_keys": [
+        "tax_position",
+        "structure_comparison",
+        "tax_implications",
+        "tax_attributes",
+        "international_considerations",
+        "structure_recommendations",
+        "estimated_tax_impact",
+        "optimal_structure"
+      ],
+      "data_size_bytes": 5193,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "integration_planner": {
+      "has_data": true,
+      "data_keys": [
+        "synergies",
+        "roadmap",
+        "org_design",
+        "culture_assessment",
+        "change_management",
+        "critical_success_factors"
+      ],
+      "data_size_bytes": 30217,
+      "num_errors": 0,
+      "num_warnings": 0,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "external_validator": {
+      "has_data": true,
+      "data_keys": [
+        "target_company",
+        "validation_timestamp",
+        "key_findings_validated",
+        "external_sources_consulted",
+        "validation_results",
+        "adjustment_plan",
+        "requires_reanalysis",
+        "confidence_score",
+        "critical_discrepancies",
+        "moderate_discrepancies",
+        "validated_findings"
+      ],
+      "data_size_bytes": 152128,
+      "num_errors": 0,
+      "num_warnings": 5,
+      "errors": [],
+      "status": "HAS_OUTPUT"
+    },
+    "synthesis_reporting": {
+      "has_data": false,
+      "data_keys": [],
+      "data_size_bytes": 0,
+      "num_errors": 1,
+      "num_warnings": 2,
+      "errors": [
+        {
+          "agent": "synthesis_reporting",
+          "error": "'investment_thesis'",
+          "phase": "synthesis"
+        }
+      ],
+      "status": "EMPTY_OUTPUT"
+    }
+  },
+  "state_keys": [
+    "target_company",
+    "target_ticker",
+    "acquirer_company",
+    "deal_type",
+    "deal_value",
+    "deal_id",
+    "errors",
+    "metadata",
+    "financial_data",
+    "financial_metrics",
+    "normalized_financials",
+    "valuation_models",
+    "proxy_compensation",
+    "financial_deep_dive",
+    "warnings",
+    "legal_risks",
+    "compliance_status",
+    "competitive_landscape",
+    "sentiment_analysis",
+    "market_data",
+    "market_strategist",
+    "competitive_analysis",
+    "competitive_benchmarking",
+    "macroeconomic_analysis",
+    "macroeconomic_analyst",
+    "risk_assessment",
+    "tax_structuring",
+    "synergy_analysis",
+    "integration_roadmap",
+    "organizational_design",
+    "integration_planner",
+    "external_validator"
+  ]
+}

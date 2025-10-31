@@ -1,0 +1,236 @@
+{
+  "report_id": "f02d8bcf-88ab-46c2-b516-410ee9ac9fc1",
+  "timestamp": "2025-10-26T18:44:50.802079",
+  "excel": {
+    "placeholders": [
+      {
+        "cell": "A2",
+        "value": "Analysis Powered by Validated Multi-Agent System - No Placeholders",
+        "pattern": "PLACEHOLDER"
+      },
+      {
+        "cell": "A29",
+        "value": "\ud83d\udd34 [0] CRITICAL Red Flags Found",
+        "pattern": "\\[.*?\\]"
+      },
+      {
+        "cell": "A30",
+        "value": "\ud83d\udfe1 [1] MODERATE Flags Found",
+        "pattern": "\\[.*?\\]"
+      },
+      {
+        "cell": "A31",
+        "value": "\ud83d\udfe2 [0] Items Validated",
+        "pattern": "\\[.*?\\]"
+      },
+      {
+        "cell": "C21",
+        "value": "[STRONG - Cash exceeds earnings]",
+        "pattern": "\\[.*?\\]"
+      },
+      {
+        "cell": "C22",
+        "value": "[No channel stuffing detected]",
+        "pattern": "\\[.*?\\]"
+      },
+      {
+        "cell": "C23",
+        "value": "[No 'big bath' detected]",
+        "pattern": "\\[.*?\\]"
+      },
+      {
+        "cell": "C24",
+        "value": "[Negative CCC = cash machine]",
+        "pattern": "\\[.*?\\]"
+      }
+    ],
+    "missing_data": [
+      {
+        "cell": "B43",
+        "value": "In progress"
+      }
+    ],
+    "empty_sections": [],
+    "n_a_values": [
+      {
+        "sheet": "Executive Dashboard",
+        "count": 0
+      },
+      {
+        "sheet": "CONTROL PANEL",
+        "count": 0
+      },
+      {
+        "sheet": "Normalization Ledger",
+        "count": 0
+      },
+      {
+        "sheet": "Anomaly Log",
+        "count": 0
+      },
+      {
+        "sheet": "Legal Risk Register",
+        "count": 0
+      },
+      {
+        "sheet": "Risk Assessment",
+        "count": 0
+      },
+      {
+        "sheet": "Tax Structuring",
+        "count": 0
+      },
+      {
+        "sheet": "LBO Model",
+        "count": 0
+      },
+      {
+        "sheet": "Validation Tear Sheet",
+        "count": 0
+      },
+      {
+        "sheet": "Agent Collaboration",
+        "count": 1
+      },
+      {
+        "sheet": "3-Statement Model",
+        "count": 0
+      },
+      {
+        "sheet": "DCF Model",
+        "count": 0
+      },
+      {
+        "sheet": "Competitive Benchmarking",
+        "count": 1
+      },
+      {
+        "sheet": "Macro Scenarios",
+        "count": 3
+      }
+    ]
+  },
+  "ppt": {
+    "placeholders": [],
+    "missing_data": [
+      "Recommendation: UNDER REVIEW"
+    ],
+    "empty_slides": []
+  },
+  "pdf": {
+    "placeholders": [
+      "Under analysis"
+    ],
+    "missing_data": [
+      "Page 12",
+      "Page 13",
+      "Page 14",
+      "Page 16"
+    ],
+    "pages_with_issues": [
+      12,
+      13,
+      14,
+      16
+    ]
+  },
+  "fix_plan": {
+    "Excel Report Fixes": [
+      {
+        "issue": "N/A values in Competitive Benchmarking sheet",
+        "root_cause": "Synthesis not extracting competitive_benchmarking agent data",
+        "file_to_fix": "src/agents/synthesis_reporting.py",
+        "function": "_generate_market_section()",
+        "fix": "Enhance data extraction from state['competitive_benchmarking']",
+        "priority": "HIGH"
+      },
+      {
+        "issue": "Placeholder text \"Under analysis\" in various sheets",
+        "root_cause": "Fallback data being used when agent data not found",
+        "file_to_fix": "src/agents/synthesis_reporting.py",
+        "function": "_find_agent_data() and _collect_fallback_agent_data()",
+        "fix": "Improve agent data search and remove fallback generation",
+        "priority": "CRITICAL"
+      },
+      {
+        "issue": "Missing macro scenario data",
+        "root_cause": "macroeconomic_analyst data not fully extracted",
+        "file_to_fix": "src/agents/synthesis_reporting.py",
+        "function": "_generate_risk_macro_section()",
+        "fix": "Extract scenario_models, correlation_analysis from macro agent",
+        "priority": "HIGH"
+      },
+      {
+        "issue": "Empty cells in financial ratios",
+        "root_cause": "financial_deep_dive ratios not all mapped",
+        "file_to_fix": "src/outputs/excel_generator.py",
+        "function": "_build_financial_deep_dive_sheet()",
+        "fix": "Map all ratio categories from synthesis data",
+        "priority": "MEDIUM"
+      }
+    ],
+    "PPT Report Fixes": [
+      {
+        "issue": "\"N/A - Data unavailable\" on competitive slides",
+        "root_cause": "Same as Excel - synthesis mapping issue",
+        "file_to_fix": "src/outputs/ppt_sections/financial_slides.py",
+        "function": "add_competitive_benchmarking_slide()",
+        "fix": "Check synthesis.market_analysis.competitive_landscape",
+        "priority": "HIGH"
+      },
+      {
+        "issue": "Generic placeholder text in macro slides",
+        "root_cause": "Macro data not fully populated",
+        "file_to_fix": "src/outputs/ppt_sections/risk_slides.py",
+        "function": "add_macroeconomic_slide()",
+        "fix": "Extract scenario data from synthesis.risk_macro",
+        "priority": "HIGH"
+      },
+      {
+        "issue": "Missing synergy details",
+        "root_cause": "Integration synergy breakdown not extracted",
+        "file_to_fix": "src/outputs/ppt_sections/executive_slides.py",
+        "function": "add_synergy_slide()",
+        "fix": "Use synthesis.integration_tax.synergy_breakdown",
+        "priority": "MEDIUM"
+      }
+    ],
+    "PDF Report Fixes": [
+      {
+        "issue": "Sections with minimal content",
+        "root_cause": "Same synthesis issues as Excel/PPT",
+        "file_to_fix": "src/outputs/pdf_sections/*",
+        "function": "Multiple section generators",
+        "fix": "Ensure all sections pull from synthesis correctly",
+        "priority": "HIGH"
+      },
+      {
+        "issue": "Tables with N/A values",
+        "root_cause": "Data not flowing from synthesis",
+        "file_to_fix": "src/outputs/revolutionary_pdf_generator.py",
+        "function": "_generate_*_section() methods",
+        "fix": "Add fallback to [] or \"Not assessed\" instead of \"N/A\"",
+        "priority": "MEDIUM"
+      }
+    ],
+    "Synthesis Agent Fixes": [
+      {
+        "issue": "Agent data not being found",
+        "root_cause": "_find_agent_data() not searching all locations",
+        "file_to_fix": "src/agents/synthesis_reporting.py",
+        "function": "_find_agent_data()",
+        "fix": "Enhanced recursive search - PARTIALLY DONE TODAY",
+        "priority": "CRITICAL",
+        "status": "IN PROGRESS"
+      },
+      {
+        "issue": "Fallback data being used too often",
+        "root_cause": "Agent data exists but not being found",
+        "file_to_fix": "src/agents/synthesis_reporting.py",
+        "function": "_collect_fallback_agent_data()",
+        "fix": "Remove fallback generation, throw error instead",
+        "priority": "HIGH"
+      }
+    ]
+  }
+}

@@ -1,0 +1,329 @@
+# M&A Diligence Swarm Configuration
+
+# AI Models Configuration
+ai_models:
+  gemini:
+    model_name: "gemini-2.5-pro"
+    temperature: 0.1
+    max_tokens: 1000000
+    use_cases:
+      - "large_document_analysis"
+      - "deep_research"
+      - "data_ingestion"
+  
+  claude:
+    # Using Claude 4.5 Sonnet - Latest and most capable model! ✅
+    model_name: "claude-sonnet-4-5"  # Alias that auto-updates to latest version
+    temperature: 0.1
+    max_tokens: 8192
+    use_cases:
+      - "financial_modeling"
+      - "code_generation"
+      - "orchestration"
+      - "synthesis"
+  
+  grok:
+    model_name: "grok-4-fast-reasoning-latest"
+    temperature: 0.2
+    max_tokens: 32768
+    use_cases:
+      - "social_media_analysis"
+      - "sentiment_analysis"
+      - "real_time_intelligence"
+
+# Agent Configuration
+agents:
+  project_manager:
+    name: "Project Manager Agent"
+    role: "orchestrator"
+    llm: "gemini"
+    capabilities:
+      - "task_planning"
+      - "agent_coordination"
+      - "progress_tracking"
+  
+  data_ingestion:
+    name: "Data Ingestion Agent"
+    role: "librarian"
+    llm: "gemini"
+    capabilities:
+      - "document_processing"
+      - "ocr"
+      - "vector_indexing"
+      - "data_cataloging"
+  
+  financial_analyst:
+    name: "Financial Analyst Agent"
+    role: "quant"
+    llm: "gemini"
+    capabilities:
+      - "financial_modeling"
+      - "valuation"
+      - "ratio_analysis"
+      - "forecasting"
+  
+  legal_counsel:
+    name: "Legal Counsel Agent"
+    role: "sentinel"
+    llm: "grok"  # Switched to grok-4-fast-reasoning-latest for speed
+    capabilities:
+      - "contract_review"
+      - "risk_identification"
+      - "compliance_check"
+      - "litigation_analysis"
+  
+  market_strategist:
+    name: "Market Strategist Agent"
+    role: "futurist"
+    llm: "grok"
+    capabilities:
+      - "competitive_analysis"
+      - "market_positioning"
+      - "sentiment_analysis"
+      - "trend_identification"
+    social_media_llm: "grok"
+  
+  integration_planner:
+    name: "Integration Planner Agent"
+    role: "architect"
+    llm: "gemini"
+    capabilities:
+      - "synergy_analysis"
+      - "integration_roadmap"
+      - "organizational_design"
+      - "culture_assessment"
+  
+  synthesis_reporting:
+    name: "Synthesis & Reporting Agent"
+    role: "storyteller"
+    llm: "gemini"
+    capabilities:
+      - "narrative_synthesis"
+      - "visualization"
+      - "report_generation"
+      - "executive_summary"
+  
+  competitive_benchmarking:
+    name: "Competitive Benchmarking Agent"
+    role: "rival"
+    llm: "gemini"
+    capabilities:
+      - "peer_analysis"
+      - "competitive_intelligence"
+      - "market_share_analysis"
+      - "performance_benchmarking"
+  
+  macroeconomic_analyst:
+    name: "Macroeconomic Analyst Agent"
+    role: "forecaster"
+    llm: "gemini"
+    capabilities:
+      - "economic_indicators"
+      - "scenario_modeling"
+      - "correlation_analysis"
+      - "sensitivity_analysis"
+  
+  conversational_synthesis:
+    name: "Conversational Synthesis Agent"
+    role: "intelligence_partner"
+    llm: "gemini"
+    capabilities:
+      - "conversational_interface"
+      - "contextual_analysis"
+      - "interactive_exploration"
+      - "assumption_modification"
+  
+  external_validator:
+    name: "External Validator Agent"
+    role: "validator"
+    llm: "gemini"
+    capabilities:
+      - "deep_research"
+      - "analyst_report_analysis"
+      - "market_consensus_validation"
+      - "discrepancy_detection"
+      - "external_fact_checking"
+    research_sources:
+      - "wall_street_analyst_reports"
+      - "sec_filings"
+      - "earnings_call_transcripts"
+      - "financial_news"
+      - "market_data_providers"
+  
+  financial_deep_dive:
+    name: "Financial Deep Dive Agent"
+    role: "specialist"
+    llm: "gemini"
+    capabilities:
+      - "working_capital_analysis"
+      - "capex_depreciation_analysis"
+      - "customer_concentration_analysis"
+      - "segment_analysis"
+      - "debt_covenant_analysis"
+      - "operational_efficiency_metrics"
+  
+  risk_assessment:
+    name: "Risk Assessment Agent"
+    role: "risk_manager"
+    llm: "gemini"
+    capabilities:
+      - "risk_aggregation"
+      - "risk_matrix_creation"
+      - "risk_scoring"
+      - "scenario_analysis"
+      - "mitigation_strategies"
+      - "deal_protection_measures"
+  
+  tax_structuring:
+    name: "Tax Structuring Agent"
+    role: "tax_advisor"
+    llm: "gemini"
+    capabilities:
+      - "tax_position_analysis"
+      - "structure_comparison"
+      - "tax_calculations"
+      - "nol_assessment"
+      - "international_tax"
+      - "structure_recommendations"
+  
+  deal_structuring:
+    name: "Deal Structuring Agent"
+    role: "deal_advisor"
+    llm: "gemini"
+    capabilities:
+      - "consideration_analysis"
+      - "purchase_structure_comparison"
+      - "tax_optimization"
+      - "earnout_modeling"
+      - "working_capital_adjustments"
+      - "purchase_price_allocation"
+  
+  accretion_dilution:
+    name: "Accretion/Dilution Agent"
+    role: "eps_analyst"
+    llm: "grok"  # Using grok-4-fast-reasoning-latest for speed
+    capabilities:
+      - "eps_accretion_analysis"
+      - "dilution_impact_modeling"
+      - "pro_forma_metrics"
+      - "breakeven_analysis"
+      - "sensitivity_scenarios"
+      - "board_presentation_summary"
+  
+  sources_uses:
+    name: "Sources & Uses Agent"
+    role: "capital_markets_advisor"
+    llm: "gemini"
+    capabilities:
+      - "financing_structure_analysis"
+      - "sources_uses_modeling"
+      - "pro_forma_capitalization"
+      - "leverage_analysis"
+      - "debt_capacity_assessment"
+      - "capital_structure_optimization"
+  
+  contribution_analysis:
+    name: "Contribution Analysis Agent"
+    role: "fairness_advisor"
+    llm: "gemini"
+    capabilities:
+      - "value_contribution_analysis"
+      - "ownership_split_assessment"
+      - "fairness_evaluation"
+      - "relative_valuation_analysis"
+      - "bargaining_position_assessment"
+      - "contribution_based_framework"
+  
+  exchange_ratio_analysis:
+    name: "Exchange Ratio Agent"
+    role: "exchange_advisor"
+    llm: "gemini"
+    capabilities:
+      - "exchange_ratio_calculation"
+      - "premium_analysis"
+      - "fairness_assessment"
+      - "valuation_based_ratios"
+      - "sensitivity_analysis"
+      - "shareholder_impact_modeling"
+
+# API Configuration
+apis:
+  fmp:
+    base_url: "https://financialmodelingprep.com/api/v3"
+    rate_limit: 300  # requests per minute
+    endpoints:
+      - "income-statement"
+      - "balance-sheet-statement"
+      - "cash-flow-statement"
+      - "ratios"
+      - "key-metrics"
+      - "company-outlook"
+  
+  tavily:
+    base_url: "https://api.tavily.com"
+    search_depth: "advanced"
+    max_results: 10
+
+# Processing Configuration
+processing:
+  max_concurrent_tasks: 5
+  timeout_seconds: 300
+  retry_attempts: 3
+  batch_size: 10
+  
+  document_processing:
+    chunk_size: 1000
+    chunk_overlap: 200
+    supported_formats:
+      - "pdf"
+      - "docx"
+      - "xlsx"
+      - "pptx"
+      - "txt"
+
+# Output Configuration
+output:
+  formats:
+    - "pdf"
+    - "excel"
+    - "json"
+    - "html"
+  
+  pdf:
+    page_size: "A4"
+    margins:
+      top: 2.5
+      bottom: 2.5
+      left: 3.0
+      right: 3.0
+    font: "Helvetica"
+    include_toc: true
+  
+  excel:
+    show_formulas: true
+    include_assumptions: true
+    color_scheme: "professional"
+    freeze_panes: true
+  
+  dashboard:
+    refresh_interval: 5
+    theme: "streamlit"
+    charts:
+      - "progress_tracker"
+      - "risk_heatmap"
+      - "financial_summary"
+      - "timeline_gantt"
+
+# Vector Database Configuration
+vector_db:
+  provider: "chromadb"
+  collection_name: "ma_documents"
+  embedding_model: "text-embedding-004"
+  distance_metric: "cosine"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name} | {message}"
+  rotation: "100 MB"
+  retention: "30 days"

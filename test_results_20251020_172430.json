@@ -1,0 +1,134 @@
+{
+  "passed": [
+    {
+      "test": "Configuration Loading",
+      "passed": true,
+      "details": "All required agents configured",
+      "timestamp": "2025-10-20T17:22:15.912420"
+    },
+    {
+      "test": "Claude LLM Init",
+      "passed": true,
+      "details": "Model: claude-sonnet-4-5",
+      "timestamp": "2025-10-20T17:22:15.912420"
+    },
+    {
+      "test": "Gemini LLM Init",
+      "passed": true,
+      "details": "Model: models/gemini-2.5-pro",
+      "timestamp": "2025-10-20T17:22:15.923123"
+    },
+    {
+      "test": "FMP API - Company Profile",
+      "passed": true,
+      "details": "Retrieved profile for Apple Inc.",
+      "timestamp": "2025-10-20T17:22:19.669181"
+    },
+    {
+      "test": "FMP API - Income Statement",
+      "passed": true,
+      "details": "Retrieved 1 period(s)",
+      "timestamp": "2025-10-20T17:22:19.686477"
+    },
+    {
+      "test": "Financial Analyst - Initialization",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:22:19.693460"
+    },
+    {
+      "test": "Financial Analyst - Financial Health Score",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:19.971988"
+    },
+    {
+      "test": "Financial Analyst - Valuation",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:19.971988"
+    },
+    {
+      "test": "Financial Analyst - Ratio Analysis",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:19.972994"
+    },
+    {
+      "test": "Financial Analyst - Normalized Financials",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:19.972994"
+    },
+    {
+      "test": "Financial Analyst - Advanced Valuation",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:19.972994"
+    },
+    {
+      "test": "Financial Analyst - Quality Score",
+      "passed": true,
+      "details": "Quality: 100/100",
+      "timestamp": "2025-10-20T17:24:19.972994"
+    },
+    {
+      "test": "Competitive Agent - Initialization",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:19.972994"
+    },
+    {
+      "test": "Competitive Agent - Analysis",
+      "passed": true,
+      "details": "Position: BELOW AVERAGE, Peers: 5",
+      "timestamp": "2025-10-20T17:24:20.633191"
+    },
+    {
+      "test": "Macro Agent - Initialization",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:20.633191"
+    },
+    {
+      "test": "Macro Agent - Analysis",
+      "passed": true,
+      "details": "Generated 4 scenarios",
+      "timestamp": "2025-10-20T17:24:20.737038"
+    },
+    {
+      "test": "Conversational Agent - Initialization",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-10-20T17:24:20.737038"
+    },
+    {
+      "test": "Conversational Agent - Initialization",
+      "passed": true,
+      "details": "Generated summary (547 chars)",
+      "timestamp": "2025-10-20T17:24:20.738045"
+    },
+    {
+      "test": "Conversational Agent - Q&A",
+      "passed": true,
+      "details": "Answered question (1586 chars)",
+      "timestamp": "2025-10-20T17:24:30.303720"
+    },
+    {
+      "test": "Anomaly Detection - Training",
+      "passed": true,
+      "details": "Trained on 8 periods",
+      "timestamp": "2025-10-20T17:24:30.304735"
+    },
+    {
+      "test": "Anomaly Detection - Detection",
+      "passed": true,
+      "details": "Detected 1 anomalies",
+      "timestamp": "2025-10-20T17:24:30.304735"
+    }
+  ],
+  "failed": [],
+  "warnings": [],
+  "start_time": "2025-10-20 17:22:15.904311",
+  "end_time": "2025-10-20 17:24:30.304735"
+}

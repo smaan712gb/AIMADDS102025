@@ -1,0 +1,17 @@
+{
+  "accretion_dilution": {
+    "status": "SUCCESS",
+    "summary": "Analysis complete"
+  },
+  "sources_uses": {
+    "status": "SUCCESS",
+    "summary": "SOURCES & USES SUMMARY\n\nTotal Transaction Size: $2.7B\n\nUSES:\n\u2022 Purchase Price: $0.0B (0.0%)\n\u2022 Refinance Debt: $2.7B (98.8%)\n\u2022 Fees: $0.0M + $33.6M\n\nSOURCES:\n\u2022 Cash: $24.2B (889.9%)\n\u2022 New Debt: $-23.1B (-849.9%)\n\u2022 New Equity: $1.6B (60.0%)\n\nPRO FORMA CAPITALIZATION:\n\u2022 Total Debt: $37.5B\n\u2022 Debt/EBITDA: 0.2x\n\u2022 Debt/Cap: 95.8%"
+  },
+  "contribution": {
+    "status": "SUCCESS",
+    "summary": "CONTRIBUTION ANALYSIS SUMMARY\n\nFINANCIAL CONTRIBUTION:\n\u2022 Acquirer: 100.3% (Revenue, EBITDA, NI weighted)\n\u2022 Target: -0.3%\n\nOWNERSHIP SPLIT:\n\u2022 Acquirer Shareholders: 100.0%\n\u2022 Target Shareholders: 0.0%\n\nFAIRNESS ASSESSMENT: GOOD\nFAIR - Ownership aligns with contribution\n\nConclusion: PROCEED - Fair exchange based on relative contributions"
+  },
+  "exchange_ratio": {
+    "error": "float division by zero"
+  }
+}
