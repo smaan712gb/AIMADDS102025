@@ -33,7 +33,15 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # React dev servers
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://storage.googleapis.com",
+        "https://amadds102025-frontend.storage.googleapis.com",
+        "https://aimadds.com",
+        "https://app.aimadds.com",
+        "https://www.aimadds.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
