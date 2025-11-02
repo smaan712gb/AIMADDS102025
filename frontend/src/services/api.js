@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = '/api';
+// Use environment variable or fallback to deployed backend
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://aimadds-backend-zex5qoe5gq-uc.a.run.app/api';
 
 // Create axios instance
 const api = axios.create({
@@ -107,8 +108,9 @@ export const analysisAPI = {
 
 // WebSocket connection
 export const createWebSocket = (jobId, onMessage) => {
-  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const wsUrl = `${protocol}//${window.location.host}/ws/analysis/${jobId}`;
+  // Use environment variable or fallback to deployed backend
+  const wsBaseUrl = import.meta.env.VITE_WS_URL || 'wss://aimadds-backend-zex5qoe5gq-uc.a.run.app';
+  const wsUrl = `${wsBaseUrl}/ws/analysis/${jobId}`;
   
   const ws = new WebSocket(wsUrl);
   
