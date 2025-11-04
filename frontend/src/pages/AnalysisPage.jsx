@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { createWebSocket } from '../services/api';
+import { analysisAPI } from '../services/api';
 import { 
   CheckCircleIcon, 
   ClockIcon,
@@ -17,52 +17,274 @@ export default function AnalysisPage() {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    // Create WebSocket connection
-    const ws = createWebSocket(jobId, handleMessage);
-
-    return () => {
-      ws.close();
+    // PRODUCTION FIX: Use HTTP polling instead of WebSocket
+    // Polls progress endpoint every 2 seconds - reliable in Cloud Run
+    console.log('Starting progress polling for job:', jobId);
+    
+    let pollCount = 0;
+    
+    const pollProgress = async () => {
+      try {
+        pollCount++;
+        console.log(`Poll #${pollCount}: Fetching progress...`);
+        
+        const progressData = await analysisAPI.getProgress(jobId);
+        console.log('Progress data received:', progressData);
+        
+        // Update current agent
+        if (progressData.current_agent) {
+          const agentInfo = getAgentInfo(progressData.current_agent);
+          setCurrentAgent({
+            name: agentInfo.name,
+            status: 'running',
+            message: agentInfo.running,
+            details: agentInfo.details
+          });
+        }
+        
+        // Update agent states
+        if (progressData.agent_status) {
+          setAgentStates(progressData.agent_status);
+          
+          // Calculate progress
+          const completed = Object.values(progressData.agent_status).filter(
+            status => status === 'completed'
+          ).length;
+          const total = 17; // Total agents
+          const newProgress = (completed / total) * 100;
+          setProgress(newProgress);
+          console.log(`Progress: ${completed}/${total} agents = ${Math.round(newProgress)}%`);
+        }
+        
+        // Check if complete
+        if (progressData.overall_status === 'completed') {
+          console.log('Analysis complete - navigating to results');
+          setIsComplete(true);
+          setProgress(100);
+          clearInterval(pollInterval);
+          setTimeout(() => navigate(`/results/${jobId}`), 2000);
+        } else if (progressData.overall_status === 'failed') {
+          console.log('Analysis failed');
+          clearInterval(pollInterval);
+        }
+      } catch (error) {
+        console.error('Poll failed:', error);
+        // If job not found, try to get result
+        if (error.response?.status === 404) {
+          try {
+            const result = await analysisAPI.getResult(jobId);
+            if (result) {
+              console.log('Analysis already complete');
+              setIsComplete(true);
+              setProgress(100);
+              clearInterval(pollInterval);
+              setTimeout(() => navigate(`/results/${jobId}`), 1000);
+            }
+          } catch (err) {
+            console.error('Failed to get result:', err);
+          }
+        }
+      }
     };
-  }, [jobId]);
+    
+    // Initial poll
+    pollProgress();
+    
+    // Poll every 2 seconds
+    const pollInterval = setInterval(pollProgress, 2000);
+    
+    return () => {
+      console.log('Stopping progress polling');
+      clearInterval(pollInterval);
+    };
+  }, [jobId, navigate]);
 
-  const handleMessage = (message) => {
-    console.log('WebSocket message:', message);
+  const getAgentInfo = (agentKey) => {
+    // Map snake_case keys to formatted names
+    const keyMap = {
+      'project_manager': 'Project Manager Agent',
+      'financial_analyst': 'Financial Analyst Agent',
+      'financial_deep_dive': 'Financial Deep Dive Agent',
+      'legal_counsel': 'Legal Counsel Agent',
+      'market_strategist': 'Market Strategist Agent',
+      'competitive_benchmarking': 'Competitive Benchmarking Agent',
+      'macroeconomic_analyst': 'Macroeconomic Analyst Agent',
+      'risk_assessment': 'Risk Assessment Agent',
+      'tax_structuring': 'Tax Structuring Agent',
+      'deal_structuring': 'Deal Structuring Agent',
+      'accretion_dilution': 'Accretion/Dilution Agent',
+      'sources_uses': 'Sources & Uses Agent',
+      'contribution_analysis': 'Contribution Analysis Agent',
+      'exchange_ratio_analysis': 'Exchange Ratio Agent',
+      'integration_planner': 'Integration Planner Agent',
+      'external_validator': 'External Validator Agent',
+      'synthesis_reporting': 'Synthesis & Reporting Agent'
+    };
+    
+    // Convert snake_case to formatted name
+    const formattedKey = keyMap[agentKey] || agentKey;
+    
+    const agentMessages = {
+      "Project Manager Agent": {
+        name: "Project Manager Agent",
+        running: "Creating analysis plan and task assignments...",
+        details: [
+          "Analyzing deal requirements and scope...",
+          "Identifying required analyses and dependencies...",
+          "Prioritizing critical tasks for due diligence..."
+        ]
+      },
+      "Financial Analyst Agent": {
+        name: "Financial Analyst Agent",
+        running: "Extracting 5-year financial statements...",
+        details: [
+          "Normalizing GAAP financials: removing non-recurring items...",
+          "Building DCF model with 3 scenarios (base/bull/bear)...",
+          "Running Monte Carlo simulation (10,000 iterations)..."
+        ]
+      },
+      "Financial Deep Dive Agent": {
+        name: "Financial Deep Dive Agent",
+        running: "Performing deep financial analysis...",
+        details: [
+          "Calculating cash conversion cycle and working capital efficiency...",
+          "Analyzing days sales outstanding, inventory turns, payables...",
+          "Examining CapEx vs. depreciation and capital intensity..."
+        ]
+      },
+      "Legal Counsel Agent": {
+        name: "Legal Counsel Agent",
+        running: "Reviewing legal documents and filings...",
+        details: [
+          "Extracting risk factors from 10-K Item 1A over 3 years...",
+          "Mining footnotes for debt covenants and commitments...",
+          "Analyzing MD&A for management tone and disclosure quality..."
+        ]
+      },
+      "Market Strategist Agent": {
+        name: "Market Strategist Agent",
+        running: "Analyzing market positioning...",
+        details: [
+          "Evaluating competitive landscape and market share trends...",
+          "Assessing TAM, SAM, SOM and market penetration rates...",
+          "Analyzing industry trends, disruptions, and dynamics..."
+        ]
+      },
+      "Competitive Benchmarking Agent": {
+        name: "Competitive Benchmarking Agent",
+        running: "Benchmarking against peer companies...",
+        details: [
+          "Identifying peer group using sector/industry screening...",
+          "Fetching financial data for 10 closest competitors...",
+          "Comparing revenue growth, margins, and profitability vs. peers..."
+        ]
+      },
+      "Macroeconomic Analyst Agent": {
+        name: "Macroeconomic Analyst Agent",
+        running: "Assessing macroeconomic factors...",
+        details: [
+          "Fetching current Treasury yields and yield curve shape...",
+          "Analyzing interest rate environment and Fed policy trajectory...",
+          "Evaluating GDP growth, inflation, and unemployment trends..."
+        ]
+      },
+      "Risk Assessment Agent": {
+        name: "Risk Assessment Agent",
+        running: "Conducting comprehensive risk assessment...",
+        details: [
+          "Aggregating risks from all agent analyses...",
+          "Creating risk matrix by likelihood and impact...",
+          "Calculating risk scores and ratings..."
+        ]
+      },
+      "Tax Structuring Agent": {
+        name: "Tax Structuring Agent",
+        running: "Analyzing tax implications and structures...",
+        details: [
+          "Analyzing target's current tax position and attributes...",
+          "Comparing asset vs. stock purchase structures...",
+          "Calculating tax implications and NPV of tax benefits..."
+        ]
+      },
+      "Deal Structuring Agent": {
+        name: "Deal Structuring Agent",
+        running: "Optimizing deal structure and terms...",
+        details: [
+          "Analyzing stock vs. cash consideration options...",
+          "Comparing asset purchase vs. stock purchase structures...",
+          "Modeling earnout provisions and contingent payments..."
+        ]
+      },
+      "Accretion/Dilution Agent": {
+        name: "Accretion/Dilution Agent",
+        running: "Calculating EPS accretion/dilution impact...",
+        details: [
+          "Analyzing acquirer's standalone EPS and shares outstanding...",
+          "Calculating pro forma combined EPS post-transaction...",
+          "Running sensitivity analysis on key assumptions..."
+        ]
+      },
+      "Sources & Uses Agent": {
+        name: "Sources & Uses Agent",
+        running: "Analyzing deal financing structure...",
+        details: [
+          "Creating sources and uses of funds table...",
+          "Analyzing equity vs. debt financing mix...",
+          "Modeling transaction costs and financing fees..."
+        ]
+      },
+      "Contribution Analysis Agent": {
+        name: "Contribution Analysis Agent",
+        running: "Analyzing value contribution...",
+        details: [
+          "Calculating standalone contribution to combined entity...",
+          "Analyzing synergy value creation attribution...",
+          "Determining fair ownership percentages..."
+        ]
+      },
+      "Exchange Ratio Agent": {
+        name: "Exchange Ratio Agent",
+        running: "Determining optimal exchange ratio...",
+        details: [
+          "Analyzing market valuations for both parties...",
+          "Calculating DCF, P/E, and P/B-based exchange ratios...",
+          "Running sensitivity analysis on proposed ratios..."
+        ]
+      },
+      "Integration Planner Agent": {
+        name: "Integration Planner Agent",
+        running: "Developing integration roadmap...",
+        details: [
+          "Identifying revenue and cost synergies...",
+          "Planning Day 1/100/365 integration milestones...",
+          "Creating detailed integration timeline..."
+        ]
+      },
+      "External Validator Agent": {
+        name: "External Validator Agent",
+        running: "Validating findings with external research...",
+        details: [
+          "Scanning Wall Street analyst reports...",
+          "Cross-referencing DCF valuations with estimates...",
+          "Flagging discrepancies with external analysis..."
+        ]
+      },
+      "Synthesis & Reporting Agent": {
+        name: "Synthesis & Reporting Agent",
+        running: "Synthesizing findings and generating reports...",
+        details: [
+          "Creating executive summary...",
+          "Compiling top findings and recommendations...",
+          "Generating reports in multiple formats..."
+        ]
+      }
+    };
 
-    if (message.type === 'agent_status') {
-      const { agent_name, status, message: msg, details } = message.data;
-      
-      setCurrentAgent({
-        name: agent_name,
-        status,
-        message: msg,
-        details: details || []
-      });
-
-      // Update agent states and immediately recalculate progress
-      setAgentStates(prev => {
-        const updated = {
-          ...prev,
-          [agent_name]: status
-        };
-        
-        // Recalculate progress immediately
-                const completedCount = Object.values(updated).filter(s => s === 'completed').length;
-        const newProgress = (completedCount / 18) * 100;
-        setProgress(newProgress);
-        console.log(`Progress: ${completedCount}/18 agents completed = ${newProgress}%`);
-        
-        return updated;
-      });
-
-    } else if (message.type === 'completion') {
-      setIsComplete(true);
-      setProgress(100);
-      
-      // Navigate to results after a short delay
-      setTimeout(() => {
-        navigate(`/results/${jobId}`);
-      }, 2000);
-    }
+    return agentMessages[formattedKey] || {
+      name: formattedKey,
+      running: `Processing ${formattedKey}...`,
+      details: []
+    };
   };
 
   const getStatusIcon = (status) => {
