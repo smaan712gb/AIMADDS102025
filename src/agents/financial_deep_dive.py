@@ -11,6 +11,7 @@ Focuses on the 13% gap in Investment Banking M&A coverage:
 This agent complements the Financial Analyst to achieve 100% IB coverage.
 """
 import asyncio
+import os
 from typing import Dict, Any, List, Optional
 from datetime import datetime
 import numpy as np
@@ -22,6 +23,10 @@ from ..core.llm_factory import get_llm
 from ..utils.enhanced_valuation_engine import EnhancedValuationEngine
 from ..utils.financial_calculator import FinancialCalculator
 from ..utils.llm_retry import llm_call_with_retry
+
+# CRITICAL FIX: Feature flags for cloud deployment optimization
+ENABLE_SEC_DOCUMENTS = os.getenv('ENABLE_SEC_DOCUMENTS', 'false').lower() == 'true'
+SEC_FETCH_TIMEOUT = int(os.getenv('SEC_FETCH_TIMEOUT', '120'))  # 2 minutes default
 
 
 class FinancialDeepDiveAgent(BaseAgent):
@@ -88,35 +93,69 @@ class FinancialDeepDiveAgent(BaseAgent):
         quality_score = financial_data_smart.get('quality_score', 'N/A')
         logger.info(f"[DEEP DIVE] Using {data_source} financial data (quality: {quality_score})")
         
-        # NEW: Extract proxy data for compensation analysis
-        proxy_compensation = {}
-        if target_ticker:
-            try:
-                from ..integrations.sec_client import SECClient
-                sec_client = SECClient()
-                
-                logger.info(f"[DEEP DIVE] Extracting DEF 14A proxy data for {target_ticker}...")
-                proxy_data = await sec_client.extract_proxy_data(target_ticker)
-                
-                if 'error' not in proxy_data:
-                    proxy_compensation = proxy_data
-                    logger.info(f"✓ Proxy data extracted: {proxy_data.get('executive_compensation', {}).get('count', 0)} compensation items")
-                    state['proxy_compensation'] = proxy_compensation
-                else:
-                    warnings.append(f"Proxy data extraction: {proxy_data.get('error')}")
-            except Exception as e:
-                warnings.append(f"Error extracting proxy data: {str(e)}")
+        # CRITICAL FIX: Conditional SEC document fetching with timeout controls
+        sec_cache = {}
         
-        # Run all 6 specialized analyses in parallel (added compensation)
-        logger.info("[DEEP DIVE] Running 6 specialized analyses in parallel...")
+        if ENABLE_SEC_DOCUMENTS and target_ticker:
+            logger.info(f"[DEEP DIVE] Pre-fetching SEC documents with {SEC_FETCH_TIMEOUT}s timeout...")
+            try:
+                from ..integrations.sec_client import get_sec_client
+                sec_client = get_sec_client()
+                
+                # Fetch 10-K with timeout
+                logger.info(f"[DEEP DIVE] Fetching 10-K for {target_ticker}...")
+                try:
+                    filing_10k = await asyncio.wait_for(
+                        sec_client.get_filing_full_text(target_ticker, '10-K'),
+                        timeout=SEC_FETCH_TIMEOUT
+                    )
+                    if 'full_text' in filing_10k:
+                        sec_cache['10k_text'] = filing_10k['full_text']
+                        logger.info(f"✓ 10-K cached ({len(sec_cache['10k_text'])//1000}KB)")
+                    else:
+                        warnings.append("Could not fetch 10-K filing")
+                except asyncio.TimeoutError:
+                    logger.warning(f"10-K fetch timed out after {SEC_FETCH_TIMEOUT}s - skipping SEC data")
+                    warnings.append(f"SEC 10-K fetch timed out - using FMP data only")
+                    sec_cache['10k_text'] = ''
+                
+                # Fetch DEF 14A with timeout
+                logger.info(f"[DEEP DIVE] Fetching DEF 14A proxy for {target_ticker}...")
+                try:
+                    proxy_data = await asyncio.wait_for(
+                        sec_client.extract_proxy_data(target_ticker),
+                        timeout=SEC_FETCH_TIMEOUT
+                    )
+                    if 'error' not in proxy_data:
+                        sec_cache['proxy_data'] = proxy_data
+                        logger.info(f"✓ Proxy data extracted: {proxy_data.get('executive_compensation', {}).get('count', 0)} items")
+                        state['proxy_compensation'] = proxy_data
+                    else:
+                        warnings.append(f"Proxy data extraction: {proxy_data.get('error')}")
+                        sec_cache['proxy_data'] = {}
+                except asyncio.TimeoutError:
+                    logger.warning(f"Proxy fetch timed out after {SEC_FETCH_TIMEOUT}s")
+                    warnings.append(f"SEC proxy fetch timed out")
+                    sec_cache['proxy_data'] = {}
+                    
+            except Exception as e:
+                logger.error(f"Error pre-fetching SEC documents: {e}")
+                warnings.append(f"SEC document fetch error: {str(e)}")
+        else:
+            logger.info(f"[DEEP DIVE] SEC document fetching disabled (ENABLE_SEC_DOCUMENTS={ENABLE_SEC_DOCUMENTS})")
+            logger.info(f"[DEEP DIVE] Using FMP API data only for faster cloud performance")
+            warnings.append("SEC document analysis disabled - using FMP data only (faster performance)")
+        
+        # Run all 6 specialized analyses in parallel with cached SEC data
+        logger.info("[DEEP DIVE] Running 6 specialized analyses in parallel (using cached SEC filings)...")
         
         analyses = await asyncio.gather(
             self._analyze_working_capital(financial_data, target_ticker, normalized_financials),
             self._analyze_capex_depreciation(financial_data, target_ticker, normalized_financials),
-            self._analyze_customer_concentration(financial_data, target_ticker, state, normalized_financials),
-            self._analyze_segments(financial_data, target_ticker, normalized_financials),
+            self._analyze_customer_concentration(financial_data, target_ticker, state, normalized_financials, sec_cache),
+            self._analyze_segments(financial_data, target_ticker, normalized_financials, sec_cache),
             self._analyze_debt_schedule(financial_data, target_ticker, state),
-            self._analyze_compensation_impact(proxy_compensation, financial_data, target_ticker),
+            self._analyze_compensation_impact(sec_cache.get('proxy_data', {}), financial_data, target_ticker),
             return_exceptions=True
         )
         
@@ -469,34 +508,32 @@ class FinancialDeepDiveAgent(BaseAgent):
         financial_data: Dict[str, Any],
         ticker: str,
         state: DiligenceState,
-        normalized_financials: Dict[str, Any] = None
+        normalized_financials: Dict[str, Any] = None,
+        sec_cache: Dict[str, Any] = None
     ) -> Dict[str, Any]:
         """
         MODULE 3: Customer Concentration Analysis - REAL DATA from SEC filings
-        Revenue concentration, geographic breakdown, churn analysis
+        Uses cached 10-K text to avoid redundant API calls
         """
         logger.info(f"[DEEP DIVE] Module 3: Customer Concentration Analysis for {ticker}")
         
         try:
-            from ..integrations.sec_client import get_sec_client
             import re
             
             profile = financial_data.get('profile', {})
-            sec_client = get_sec_client()
             
-            # Parse actual 10-K for customer concentration and geographic data
-            logger.info(f"[DEEP DIVE] Fetching 10-K for customer concentration disclosures...")
+            # Use cached 10-K text
+            logger.info(f"[DEEP DIVE] Using cached 10-K for customer concentration...")
             
             customer_disclosures = []
             geographic_revenue_data = {}
             concentration_risk = 'Low'  # Default
             
             try:
-                # Get latest 10-K
-                filing_data = await sec_client.get_filing_full_text(ticker, '10-K')
+                # CRITICAL FIX: Use cached 10-K text instead of re-fetching
+                text = sec_cache.get('10k_text', '') if sec_cache else ''
                 
-                if 'full_text' in filing_data and filing_data['full_text']:
-                    text = filing_data['full_text']
+                if text:
                     
                     # Search for customer concentration disclosures
                     customer_patterns = [
@@ -556,7 +593,7 @@ class FinancialDeepDiveAgent(BaseAgent):
                                     pass
                 
             except Exception as parse_error:
-                logger.warning(f"Error parsing 10-K: {parse_error}")
+                logger.warning(f"Error parsing cached 10-K: {parse_error}")
                 # Fall back to profile-based estimates if parsing fails
                 country = profile.get('country', 'US')
                 if country == 'US':
@@ -565,7 +602,7 @@ class FinancialDeepDiveAgent(BaseAgent):
                         'europe': 20,
                         'asia_pacific': 10,
                         'other': 5,
-                        'note': 'Estimated from company profile (10-K parsing failed)'
+                        'note': 'Estimated from company profile (cached 10-K parsing failed)'
                     }
             
             # Build result
@@ -595,15 +632,14 @@ class FinancialDeepDiveAgent(BaseAgent):
             logger.error(f"[DEEP DIVE] Error in customer concentration analysis: {e}")
             return {'error': str(e)}
     
-    async def _analyze_segments(self, financial_data: Dict[str, Any], ticker: str, normalized_financials: Dict[str, Any] = None) -> Dict[str, Any]:
+    async def _analyze_segments(self, financial_data: Dict[str, Any], ticker: str, normalized_financials: Dict[str, Any] = None, sec_cache: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         MODULE 4: Segment Analysis - REAL DATA from SEC 10-K
-        Revenue and profitability by segment, growth rates
+        Uses cached 10-K text to avoid redundant API calls
         """
         logger.info(f"[DEEP DIVE] Module 4: Segment Analysis for {ticker}")
         
         try:
-            from ..integrations.sec_client import get_sec_client
             import re
             
             income_statements = financial_data.get('income_statement', [])
@@ -614,18 +650,16 @@ class FinancialDeepDiveAgent(BaseAgent):
             latest_is = income_statements[0]
             total_revenue = latest_is.get('revenue', 0)
             
-            # Parse 10-K for segment data
-            sec_client = get_sec_client()
-            logger.info(f"[DEEP DIVE] Parsing 10-K for segment reporting...")
+            # Use cached 10-K text
+            logger.info(f"[DEEP DIVE] Using cached 10-K for segment reporting...")
             
             segments_found = []
-            geographic_segments = []
             
             try:
-                filing_data = await sec_client.get_filing_full_text(ticker, '10-K')
+                # CRITICAL FIX: Use cached 10-K text instead of re-fetching
+                text = sec_cache.get('10k_text', '') if sec_cache else ''
                 
-                if 'full_text' in filing_data and filing_data['full_text']:
-                    text = filing_data['full_text']
+                if text:
                     
                     # Search for segment revenue patterns
                     segment_patterns = [

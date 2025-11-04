@@ -65,224 +65,58 @@ class AnalysisOrchestrator:
         self.report_generator = ReportGenerator() if REPORT_AVAILABLE else None
         
         # Agent status messages for UI
-        self.agent_messages = {
-            "project_manager": {
-                "name": "Project Manager Agent",
-                "running": "Creating analysis plan and task assignments...",
-                "details": [
-                    "Analyzing deal requirements and scope...",
-                    "Identifying required analyses and dependencies...",
-                    "Prioritizing critical tasks for due diligence...",
-                    "Creating detailed project timeline...",
-                    "Coordinating agent workflow and handoffs...",
-                    "Establishing success criteria and milestones..."
-                ]
+        self.agent_messages = {}  # Will be populated dynamically or use defaults
+    
+    def _validate_agent_prerequisites(self, state: Dict[str, Any], agent_key: str) -> tuple[bool, List[str]]:
+        """
+        Check if agent has required data to run
+        
+        Args:
+            state: Current diligence state
+            agent_key: Agent identifier
+            
+        Returns:
+            Tuple of (can_run: bool, missing_fields: list)
+        """
+        # Define prerequisites for each agent
+        prerequisites = {
+            'sources_uses': {
+                'required': ['deal_value'],
+                'optional': ['deal_terms', 'financial_data']
             },
-            "data_ingestion": {
-                "name": "Data Ingestion Agent",
-                "running": "Connecting to SEC & FMP APIs...",
-                "details": [
-                    "Downloading 10-K and 10-Q filings from SEC EDGAR...",
-                    "Fetching 5 years of financial statements from FMP...",
-                    "Ingesting press releases and analyst estimates...",
-                    "Processing earnings call transcripts and guidance...",
-                    "Extracting insider trading and institutional ownership data...",
-                    "Cataloging all documents in vector database..."
-                ]
+            'accretion_dilution': {
+                'required': ['acquirer_data', 'deal_value'],
+                'optional': ['deal_terms']
             },
-            "financial_analyst": {
-                "name": "Financial Analyst Agent",
-                "running": "Extracting 5-year financial statements...",
-                "details": [
-                    "Normalizing GAAP financials: removing non-recurring items...",
-                    "Building DCF model with 3 scenarios (base/bull/bear)...",
-                    "Running Monte Carlo simulation (10,000 iterations)...",
-                    "Calculating comparable company multiples and ratios...",
-                    "Analyzing profitability trends and margin drivers...",
-                    "Assessing earnings quality and cash flow generation..."
-                ]
+            'exchange_ratio_analysis': {
+                'required': ['acquirer_data', 'valuation_models'],
+                'optional': ['deal_terms']
             },
-            "legal_counsel": {
-                "name": "Legal Counsel Agent",
-                "running": "Reviewing legal documents and filings...",
-                "details": [
-                    "Extracting risk factors from 10-K Item 1A over 3 years...",
-                    "Mining footnotes for debt covenants and commitments...",
-                    "Analyzing MD&A for management tone and disclosure quality...",
-                    "Identifying material contracts and litigation exposure...",
-                    "Assessing IP portfolio, patents, and legal protections...",
-                    "Evaluating regulatory compliance and governance structure..."
-                ]
-            },
-            "market_strategist": {
-                "name": "Market Strategist Agent",
-                "running": "Analyzing market positioning...",
-                "details": [
-                    "Evaluating competitive landscape and market share trends...",
-                    "Analyzing social media sentiment with Grok 4 (X/Twitter)...",
-                    "Assessing TAM, SAM, SOM and market penetration rates...",
-                    "Identifying growth opportunities and expansion vectors...",
-                    "Analyzing industry trends, disruptions, and dynamics...",
-                    "Evaluating pricing power and customer switching costs..."
-                ]
-            },
-            "competitive_benchmarking": {
-                "name": "Competitive Benchmarking Agent",
-                "running": "Benchmarking against peer companies...",
-                "details": [
-                    "Identifying peer group using sector/industry screening...",
-                    "Fetching financial data for 10 closest competitors...",
-                    "Comparing revenue growth, margins, and profitability vs. peers...",
-                    "Benchmarking ROE, ROA, ROIC against industry standards...",
-                    "Analyzing competitive advantages and market positioning...",
-                    "Identifying performance gaps and strategic weaknesses..."
-                ]
-            },
-            "macroeconomic_analyst": {
-                "name": "Macroeconomic Analyst Agent",
-                "running": "Assessing macroeconomic factors...",
-                "details": [
-                    "Fetching current Treasury yields and yield curve shape...",
-                    "Analyzing interest rate environment and Fed policy trajectory...",
-                    "Evaluating GDP growth, inflation, and unemployment trends...",
-                    "Running correlation analysis: macro factors vs. stock performance...",
-                    "Building scenario models: bull/base/bear economic outcomes...",
-                    "Assessing market timing, cycle position, and recession risks..."
-                ]
-            },
-            "integration_planner": {
-                "name": "Integration Planner Agent",
-                "running": "Developing integration roadmap...",
-                "details": [
-                    "Identifying revenue synergies: cross-sell and upsell opportunities...",
-                    "Quantifying cost synergies: redundancies and consolidation...",
-                    "Planning Day 1/100/365 integration milestones and quick wins...",
-                    "Designing target organizational structure and reporting lines...",
-                    "Assessing cultural fit and change management requirements...",
-                    "Creating detailed integration timeline with dependencies..."
-                ]
-            },
-            "external_validator": {
-                "name": "External Validator Agent",
-                "running": "Validating findings with external research...",
-                "details": [
-                    "Scanning Wall Street analyst reports for consensus views...",
-                    "Performing deep web research using Gemini's search capabilities...",
-                    "Cross-referencing DCF valuations with sell-side estimates...",
-                    "Validating key assumptions against public equity research...",
-                    "Flagging discrepancies between internal and external analysis...",
-                    "Identifying hidden risks mentioned in analyst reports..."
-                ]
-            },
-            "synthesis_reporting": {
-                "name": "Synthesis & Reporting Agent",
-                "running": "Synthesizing findings and generating reports...",
-                "details": [
-                    "Creating investment committee-ready executive summary...",
-                    "Compiling top 10 findings: risks, opportunities, insights...",
-                    "Synthesizing recommendations with clear go/no-go guidance...",
-                    "Generating PowerPoint deck with key charts and visuals...",
-                    "Building Excel model with transparent formulas and assumptions...",
-                    "Producing PDF report with complete due diligence narrative..."
-                ]
-            },
-            "financial_deep_dive": {
-                "name": "Financial Deep Dive Agent",
-                "running": "Performing deep financial analysis...",
-                "details": [
-                    "Calculating cash conversion cycle and working capital efficiency...",
-                    "Analyzing days sales outstanding, inventory turns, payables...",
-                    "Examining CapEx vs. depreciation and capital intensity...",
-                    "Assessing maintenance vs. growth CapEx allocation...",
-                    "Detecting customer concentration risks and revenue quality...",
-                    "Analyzing business segment performance and profitability..."
-                ]
-            },
-            "risk_assessment": {
-                "name": "Risk Assessment Agent",
-                "running": "Conducting comprehensive risk assessment...",
-                "details": [
-                    "Aggregating risks from all agent analyses...",
-                    "Creating risk matrix by likelihood and impact...",
-                    "Calculating risk scores and ratings...",
-                    "Generating risk-adjusted valuation scenarios...",
-                    "Recommending risk mitigation strategies...",
-                    "Identifying critical deal risks and protection measures..."
-                ]
-            },
-            "tax_structuring": {
-                "name": "Tax Structuring Agent",
-                "running": "Analyzing tax implications and structures...",
-                "details": [
-                    "Analyzing target's current tax position and attributes...",
-                    "Comparing asset vs. stock purchase structures...",
-                    "Calculating tax implications and NPV of tax benefits...",
-                    "Assessing NOLs and tax loss carryforwards...",
-                    "Evaluating international tax considerations...",
-                    "Recommending optimal deal structure for tax efficiency..."
-                ]
-            },
-            "deal_structuring": {
-                "name": "Deal Structuring Agent",
-                "running": "Optimizing deal structure and terms...",
-                "details": [
-                    "Analyzing stock vs. cash consideration options...",
-                    "Comparing asset purchase vs. stock purchase structures...",
-                    "Calculating tax implications (338(h)(10), 338(g) elections)...",
-                    "Modeling earnout provisions and contingent payments...",
-                    "Determining working capital peg and adjustments...",
-                    "Developing purchase price allocation strategy..."
-                ]
-            },
-            "accretion_dilution": {
-                "name": "Accretion/Dilution Agent",
-                "running": "Calculating EPS accretion/dilution impact...",
-                "details": [
-                    "Analyzing acquirer's standalone EPS and shares outstanding...",
-                    "Calculating pro forma combined EPS post-transaction...",
-                    "Modeling dilution from new share issuance...",
-                    "Assessing accretion from synergies and earnings contribution...",
-                    "Running sensitivity analysis on key assumptions...",
-                    "Creating board presentation summary with breakeven analysis..."
-                ]
-            },
-            "sources_uses": {
-                "name": "Sources & Uses Agent",
-                "running": "Analyzing deal financing structure...",
-                "details": [
-                    "Creating sources and uses of funds table...",
-                    "Analyzing equity vs. debt financing mix...",
-                    "Calculating total capital required for transaction...",
-                    "Assessing funding sources and availability...",
-                    "Modeling transaction costs and financing fees...",
-                    "Evaluating financing structure optimality and credit impact..."
-                ]
-            },
-            "contribution_analysis": {
-                "name": "Contribution Analysis Agent",
-                "running": "Analyzing value contribution...",
-                "details": [
-                    "Calculating acquirer's standalone contribution to combined entity...",
-                    "Assessing target's standalone contribution to value creation...",
-                    "Analyzing synergy value creation attribution...",
-                    "Determining fair ownership percentages based on contribution...",
-                    "Evaluating relative bargaining positions and deal fairness...",
-                    "Creating contribution-based valuation framework..."
-                ]
-            },
-            "exchange_ratio_analysis": {
-                "name": "Exchange Ratio Agent",
-                "running": "Determining optimal exchange ratio...",
-                "details": [
-                    "Analyzing current market valuations for both parties...",
-                    "Calculating DCF, P/E, and P/B-based exchange ratios...",
-                    "Modeling dilution impact on existing shareholders...",
-                    "Assessing fairness from acquirer and target perspectives...",
-                    "Running sensitivity analysis on proposed ratios...",
-                    "Recommending exchange ratio range and premium levels..."
-                ]
+            'contribution_analysis': {
+                'required': ['acquirer_data', 'valuation_models'],
+                'optional': ['deal_terms']
             }
         }
+        
+        # If agent doesn't have prerequisites defined, it can always run
+        if agent_key not in prerequisites:
+            return True, []
+        
+        reqs = prerequisites[agent_key]['required']
+        missing = []
+        
+        for field in reqs:
+            value = state.get(field)
+            # Check if field exists and has meaningful data
+            if not value or (isinstance(value, dict) and not value) or (isinstance(value, list) and not value):
+                missing.append(field)
+        
+        if missing:
+            logger.error(f"❌ {agent_key} missing required data: {missing}")
+            return False, missing
+        
+        logger.info(f"✓ {agent_key} prerequisites validated")
+        return True, []
     
     async def run_analysis(self, job_id: str):
         """Run complete analysis workflow
@@ -439,6 +273,30 @@ class AnalysisOrchestrator:
             ]
             
             for agent_key, agent_instance in agents_to_run:
+                # CRITICAL FIX: Validate prerequisites before running agent
+                can_run, missing_fields = self._validate_agent_prerequisites(state, agent_key)
+                
+                if not can_run:
+                    logger.warning(f"⚠️  Skipping {agent_key} - missing required data: {', '.join(missing_fields)}")
+                    state = update_agent_status(state, agent_key, AgentStatus.SKIPPED)
+                    state['warnings'].append(f"{agent_key} skipped - missing data: {', '.join(missing_fields)}")
+                    
+                    # Notify user about skipped agent
+                    await self.job_manager.broadcast_update(job_id, {
+                        "type": "agent_skipped",
+                        "job_id": job_id,
+                        "data": {
+                            "agent_name": agent_key.replace('_', ' ').title(),
+                            "reason": f"Missing required data: {', '.join(missing_fields)}",
+                            "message": f"Agent skipped - requires: {', '.join(missing_fields)}"
+                        },
+                        "timestamp": datetime.utcnow().isoformat()
+                    })
+                    
+                    # Save state and continue to next agent
+                    self.job_manager.active_jobs[job_id] = state
+                    self.job_manager._save_job(job_id, state)
+                    continue
                 # Send "running" status
                 await self._send_agent_update(
                     job_id,
@@ -802,7 +660,7 @@ class AnalysisOrchestrator:
                 self.job_manager._save_job(job_id, state)
     
     async def _send_agent_update(self, job_id: str, agent_key: str, status: AgentStatusEnum):
-        """Send agent status update via WebSocket
+        """Send agent status update via WebSocket with detailed execution info
         
         Args:
             job_id: Job ID
@@ -815,6 +673,7 @@ class AnalysisOrchestrator:
             "details": []
         })
         
+        # CRITICAL FIX: Include detailed agent activities for frontend display
         message = {
             "type": "agent_status",
             "job_id": job_id,
@@ -823,15 +682,135 @@ class AnalysisOrchestrator:
                 "status": status.value,
                 "message": agent_info["running"] if status == AgentStatusEnum.RUNNING else f"{agent_info['name']} {status.value}",
                 "details": agent_info["details"] if status == AgentStatusEnum.RUNNING else [],
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.utcnow().isoformat(),
+                # Add capabilities metadata for frontend to display
+                "capabilities": self._get_agent_capabilities(agent_key) if status == AgentStatusEnum.RUNNING else []
             },
             "timestamp": datetime.utcnow().isoformat()
         }
+        
+        logger.info(f"📤 Sending {status.value} update for {agent_info['name']} with {len(agent_info.get('details', []))} detail items")
         
         await self.job_manager.broadcast_update(job_id, message)
         
         # Small delay for UX (so user can see the update)
         await asyncio.sleep(0.5)
+    
+    def _get_agent_capabilities(self, agent_key: str) -> List[str]:
+        """Get agent capabilities for frontend display
+        
+        Args:
+            agent_key: Agent identifier
+            
+        Returns:
+            List of capability descriptions
+        """
+        capabilities_map = {
+            "project_manager": [
+                "Multi-agent orchestration & sequencing",
+                "Real-time workflow optimization",
+                "Error handling & retry logic",
+                "Status monitoring & dependency management"
+            ],
+            "financial_analyst": [
+                "Financial statement normalization & adjustments",
+                "Earnings quality scoring (100-point scale)",
+                "DCF valuation with Monte Carlo simulation",
+                "R&D capitalization & one-time expense identification"
+            ],
+            "financial_deep_dive": [
+                "Working capital efficiency analysis & optimization",
+                "Cash conversion cycle & days payable optimization",
+                "CapEx intensity analysis & capital recommendations",
+                "Customer concentration risk assessment"
+            ],
+            "legal_counsel": [
+                "SEC EDGAR analysis (10-K, 10-Q, 8-K, DEF 14A)",
+                "Change-of-control clause detection & quantification",
+                "Debt covenant analysis & waiver requirements",
+                "Founder compensation risk review"
+            ],
+            "market_strategist": [
+                "Industry growth projections & trend analysis",
+                "Market sentiment analysis with proprietary algorithms",
+                "Competitive positioning assessment & fit evaluation",
+                "Economic cycle impact modeling"
+            ],
+            "competitive_benchmarking": [
+                "Automated peer company selection & analysis",
+                "Financial multiples & valuation benchmarking",
+                "Competitive advantage quantification",
+                "Market share trends & growth analysis"
+            ],
+            "macroeconomic_analyst": [
+                "Interest rate sensitivity analysis & forecasting",
+                "Inflation impact modeling & hedge recommendations",
+                "GDP growth & economic cycle assessment",
+                "Currency exposure analysis & FX risk quantification"
+            ],
+            "risk_assessment": [
+                "65-point operational risk scoring methodology",
+                "Critical/high/medium/low risk categorization",
+                "Industry-standard risk frameworks (COSO, ISO 31000)",
+                "Mitigation strategy recommendations & cost-benefit analysis"
+            ],
+            "tax_structuring": [
+                "Asset vs. stock purchase structural analysis",
+                "Section 338(h)(10) election optimization modeling",
+                "Tax-efficient restructuring alternatives",
+                "Big 4-caliber tax benefit quantification"
+            ],
+            "deal_structuring": [
+                "Stock vs. cash consideration optimization analysis",
+                "Asset purchase vs. stock purchase structure comparison",
+                "Tax implications modeling (338(h)(10), 338(g) elections)",
+                "Earnout provisions and contingent payment structuring"
+            ],
+            "accretion_dilution": [
+                "Pro forma EPS impact analysis post-transaction",
+                "Share dilution calculations from new equity issuance",
+                "Accretion quantification from synergies and earnings",
+                "Breakeven analysis and sensitivity scenarios"
+            ],
+            "sources_uses": [
+                "Complete sources and uses of funds table creation",
+                "Equity vs. debt financing mix optimization",
+                "Transaction costs and financing fees calculation",
+                "Credit impact assessment and debt capacity analysis"
+            ],
+            "contribution_analysis": [
+                "Standalone value contribution calculations for both parties",
+                "Synergy value creation and attribution analysis",
+                "Fair ownership percentage determination",
+                "Relative bargaining position and deal fairness evaluation"
+            ],
+            "exchange_ratio_analysis": [
+                "Market valuation-based exchange ratio calculation",
+                "DCF, P/E, and P/B methodology-based ratio analysis",
+                "Dilution impact modeling for existing shareholders",
+                "Fairness assessment from acquirer and target perspectives"
+            ],
+            "integration_planner": [
+                "Integration roadmap development (12-month timeline)",
+                "Revenue & cost synergy quantification",
+                "Day 1 readiness assessment & planning",
+                "Cultural integration risk evaluation"
+            ],
+            "external_validator": [
+                "Cross-referencing with external data sources",
+                "Confidence scoring across all findings",
+                "Data accuracy verification & hallucination detection",
+                "External valuation consensus comparison"
+            ],
+            "synthesis_reporting": [
+                "Multi-agent data consolidation & conflict resolution",
+                "Quality control & hallucination detection",
+                "Executive summary synthesis & key insight extraction",
+                "Report-ready data structure creation for all outputs"
+            ]
+        }
+        
+        return capabilities_map.get(agent_key, [])
     
     async def _generate_reports(self, job_id: str, state: Dict[str, Any]):
         """Generate all reports with data consistency validation
