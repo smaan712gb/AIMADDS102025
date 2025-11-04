@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: 'https://storage.googleapis.com/amadds102025-frontend/',  // Cloud Storage bucket URL
+  base: './',  // Relative paths for Cloud Storage
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
